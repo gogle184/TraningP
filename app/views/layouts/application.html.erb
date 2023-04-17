@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>研修メーカー</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div id="logo">研修メーカー</div>
+        <nav>
+          <% if user_signed_in? %>
+            <ul>
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Profile", user_path(current_user) %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          <% else %>
+            <ul>
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "About", about_path %></li>
+              <li><%= link_to "Contact", contact_path %></li>
+              <li><%= link_to "Login", new_user_session_path %></li>
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
+            </ul>
+          <% end %>
+        </nav>
+    </header>
+    <div class="container">
+    <main>
+      <%= yield %>
+      <!-- メインコンテンツ -->
+    </main>
+    <aside>
+      <h2>Categories</h2>
+      <ul>
+        <li><a href="#">Category 1</a></li>
+        <li><a href="#">Category 2</a></li>
+        <li><a href="#">Category 3</a></li>
+      </ul>
+      <form>
+        <label for="search">Search:</label>
+        <input type="text" id="search" name="search">
+        <input type="submit" value="Search">
+      </form>
+    </aside>
+    </div>
+    
+    <footer>
+      <!-- フッター -->
+    </footer>
+  </body>
+</html>
