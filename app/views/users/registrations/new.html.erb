@@ -22,6 +22,16 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
+      <div class="box-admin">
+        <%= f.label :admin, "マネージャー設定" %><br />
+        <%= f.check_box :admin %>
+      </div>
+
+      <div class="box-admin-id">
+        <%= f.label :adminId, "マネジメントID" %><br />
+        <%= f.text_field :adminId, autocomplete: "adminId" %>
+      </div>
+
       <div class="actions">
         <%= f.submit "アカウントを作成する" %>
       </div>

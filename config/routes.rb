@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'contents/index'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'   
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   get 'about', to: 'home#about'
   get 'contact', to: 'home#contact'
   get 'user', to: 'home#user'
+  resources :contents
 
   
 end

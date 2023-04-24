@@ -19,19 +19,34 @@ h2 {
 }
 
 .box-email label,
-.box-password label {
+.box-password label,
+.box-confirm label,
+.box-admin label,
+.box-admin-id label {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   display: block;
 }
 
 .box-email input[type="email"],
-.box-password input[type="password"] {
+.box-password input[type="password"],
+.box-confirm input[type="password"],
+.box-admin-id input[type="text"] {
   width: 100%;
   padding: 1rem;
   border: none;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.box-admin input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-right: 0.5rem;
+  margin-bottom: 40px;
+}
+
+.box-admin input[type="checkbox"] {
+  margin-right: 0.5rem;
 }
 
 .actions {
