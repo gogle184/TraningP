@@ -1,3 +1,61 @@
-// Place all the styles related to the contents controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+/* コンテンツの大枠 */
+.main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+}
+
+/* コンテンツの中身 */
+.content-index {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* コンテンツのタイトル */
+.category-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* コンテンツの説明 */
+.category-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* コンテンツの内容 */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* コンテンツのタイトルと説明 */
+.content-header {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.content-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.content-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}

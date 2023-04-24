@@ -1,18 +1,20 @@
-<h1>Contents</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="main-page">
+  <div class="content-guide">
     <% @contents.each do |content| %>
-      <tr>
-        <td><%= content.title %></td>
-        <td><%= content.description %></td>
-      </tr>
+      <div class="content-index">
+        <h2 class="category-title">コンテンツタイトル</h2>
+        <p class="category-description">カテゴリの説明</p>
+        <div class="content-wrapper">
+          <div class="content-header">
+            <div class="content-title">
+              <%= content.title %>
+            </div>
+            <div class="content-description">
+              <%= content.description %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
