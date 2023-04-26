@@ -1,61 +1,94 @@
 /* コンテンツの大枠 */
 .main-page {
   display: flex;
-  flex-direction: column;
   align-items: center;
   width: 100%;
   padding: 0 10px;
 }
 
+.content-guide {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.category-title,
+.category-description {
+  text-align: left;
+}
+
+/* コンテンツのタイトルと説明 */
+.content-title,
+.content-description {
+  text-align: left;
+}
+
 /* コンテンツの中身 */
 .content-index {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   max-width: 800px;
   width: 100%;
-  margin-bottom: 20px;
+  margin: 0 auto;
   border: 1px solid #ccc;
   padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* コンテンツのタイトル */
 .category-title {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 10px;
+}
+
+.category-title p {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 /* コンテンツの説明 */
 .category-description {
   font-size: 14px;
   color: #666;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 /* コンテンツの内容 */
 .content-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
 }
 
 /* コンテンツのタイトルと説明 */
 .content-header {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
 }
 
 .content-title {
   font-size: 20px;
+  font-weight: bold;
   margin-bottom: 10px;
+  text-align: left;
+  /* タイトルを左揃えにする */
 }
 
 .content-description {
   font-size: 14px;
   color: #666;
   margin-bottom: 10px;
+  text-align: left;
+  /* 説明を左揃えにする */
+}
+
+.content-mainWrapper {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  /* 枠線を含めた幅にするために必要 */
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
 }

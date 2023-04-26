@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'categories/index'
+  get 'categories/edit'
   get 'contents/index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => {
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'home#contact'
   get 'user', to: 'home#user'
   resources :contents
+  resources :categories, expect: [:new, :show]
 
   
 end

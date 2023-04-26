@@ -1,20 +1,35 @@
-<div class="main-page">
-  <div class="content-guide">
-    <% @contents.each do |content| %>
-      <div class="content-index">
-        <h2 class="category-title">コンテンツタイトル</h2>
-        <p class="category-description">カテゴリの説明</p>
-        <div class="content-wrapper">
-          <div class="content-header">
-            <div class="content-title">
-              <%= content.title %>
-            </div>
-            <div class="content-description">
-              <%= content.description %>
-            </div>
+<div class = "content-wrapper">
+  <div class = "content-index-container">
+    <% @categories.each do |category| %>
+      <% if category.contents.present? %>
+        <div class = "content-index">
+          <div class = "category-title">
+            <%= category.title %>
+          </div>
+          <div class = "category-description">
+            <%= category.description %>
+          </div>
+          <div class="category-content">
+            <% category.contents.each do |content| %>
+              <div class = "content-mainWrapper">
+                <div class = "content-wrapper">
+                  <div class = "content-header">
+                    <div class = "content-title">
+                      <%= link_to content.title, content_path(content) %>
+                    </div>
+                    <div class = "content-description">
+                      <%= content.description %>
+                    </div>
+                    <div class="content-delete">
+                      <%= link_to "削除", content, method: :delete, data: { confirm: "本当に削除しますか?" } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
