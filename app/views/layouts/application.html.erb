@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 
   <body>
@@ -33,16 +34,14 @@
         </nav>
     </header>
     <div class="container">
-    <main>
-      <%= yield %>
-      <!-- メインコンテンツ -->
-    </main>
     <aside>
-      <h2>Categories</h2>
+      <h2>カテゴリー一覧</h2>
       <ul>
-        <li><a href="#">Category 1</a></li>
-        <li><a href="#">Category 2</a></li>
-        <li><a href="#">Category 3</a></li>
+        <% Category.all.each do |category| %>
+          <% if category.contents.present? %>
+          <li><%= link_to category.title, category_path(category) %></li>
+          <% end %>
+        <% end %>
       </ul>
       <form>
         <label for="search">Search:</label>
@@ -50,10 +49,16 @@
         <input type="submit" value="Search">
       </form>
     </aside>
+    <main>
+      <%= yield %>
+      <!-- メインコンテンツ -->
+    </main>
     </div>
     
     <footer>
-      <!-- フッター -->
+      <p>お問い合わせはこちら</p>
+      <hr>
+      <p>@2023 Genki Sato</p>
     </footer>
   </body>
 </html>
