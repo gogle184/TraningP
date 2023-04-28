@@ -39,7 +39,7 @@
       <ul>
         <% Category.all.each do |category| %>
           <% if category.contents.present? %>
-          <li><%= link_to category.title, content_path(category) %></li>
+          <li><%= link_to category.title, content_path(category.contents.first) %></li>
           <% end %>
         <% end %>
       </ul>
