@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'about', to: 'home#about'
   get 'contact', to: 'home#contact'
-  get 'user', to: 'home#user'
   resources :contents
   resources :categories, expect: [:new, :show]
+  resources :users, only: [:show]
+  
 
   
 end

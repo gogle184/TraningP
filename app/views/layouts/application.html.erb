@@ -39,7 +39,7 @@
       <ul>
         <% Category.all.each do |category| %>
           <% if category.contents.present? %>
-          <li><%= link_to category.title, category_path(category) %></li>
+          <li><%= link_to category.title, content_path(category) %></li>
           <% end %>
         <% end %>
       </ul>
@@ -50,6 +50,8 @@
       </form>
     </aside>
     <main>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
       <!-- メインコンテンツ -->
     </main>
