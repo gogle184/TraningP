@@ -1,7 +1,10 @@
 class ContentsController < ApplicationController
+  before_action :set_admin_id
+  
+
   def index
-    @contents = Content.all
-    @categories = Category.all
+    @contents = Content.where(admin_id: current_user.admin_id)
+    @categories = Category.where(admin_id: current_user.admin_id)
   end
 
   def new
@@ -15,6 +18,8 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     @content.user_id = current_user.id
+    @content.admin_id = @admin_id
+
     if @content.save
       redirect_to contents_path
     else
@@ -31,7 +36,14 @@ class ContentsController < ApplicationController
   end
 
   private
-    def content_params
-      params.require(:content).permit(:title, :about, :category_id, :image, :description, :text, :video)
-    end
+
+  def set_admin_id
+    @admin_id = current_user.admin_id
+    
+  end
+
+  def content_params
+    params.require(:content).permit(:title, :about, :category_id, :image, :description, :text, :video)
+  end
+
 end
