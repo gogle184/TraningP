@@ -21,22 +21,8 @@
       </div>
 
       <div class="box-admin-id">
-        <%= f.label :adminId, "マネジメントID" %><br />
-        <%= f.text_field :adminId, autocomplete: "adminId" %>
-      </div>
-
-      <div class="box-password">
-        <%= f.label :password, "パスワード" %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> 文字以上)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
-        <span class="hint">(パスワードの変更が不要な場合は、空欄のままにしてください)</span>
-      </div>
-
-      <div class="box-confirm">
-        <%= f.label :password_confirmation, "パスワード（確認）" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.label :admin_id, "マネジメントID" %><br />
+        <%= f.text_field :admin_id, autocomplete: "admin_id" %>
       </div>
 
       <div class="actions">

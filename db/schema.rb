@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_28_110539) do
+ActiveRecord::Schema.define(version: 2023_04_29_031501) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2023_04_28_110539) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
+    t.integer "user_id"
+    t.string "admin_id", default: "", null: false
   end
 
   create_table "contents", force: :cascade do |t|
@@ -67,6 +69,7 @@ ActiveRecord::Schema.define(version: 2023_04_28_110539) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.string "video"
+    t.string "admin_id", default: "", null: false
     t.index ["user_id"], name: "index_contents_on_user_id"
   end
 
@@ -78,7 +81,7 @@ ActiveRecord::Schema.define(version: 2023_04_28_110539) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "adminId", default: ""
+    t.string "admin_id", default: ""
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

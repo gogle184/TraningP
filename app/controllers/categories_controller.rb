@@ -3,15 +3,15 @@ class CategoriesController < ApplicationController
 
   def index
     @category = Category.new
-    @categories = Category.all
+    @categories = Category.where(admin_id: current_user.admin_id)
   end
 
   def create
     @category = Category.new(category_params)
+    @category.admin_id = current_user.admin_id
     if @category.save
       redirect_to categories_path
     else
-      @categories = Category.all
       render 'index'
     end
   end
@@ -34,12 +34,11 @@ class CategoriesController < ApplicationController
 
   private
 
-    def set_category
-      @category = Category.find(params[:id])
-    end
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
-    def category_params
-      params.require(:category).permit(:title, :description)
-    end
-
+  def category_params
+    params.require(:category).permit(:title, :description)
+  end
 end

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-3">
-    <%= form_with model: @category do |f| %>
+    <%= form_with model: @category, url: categories_path do |f| %>
       <%= f.label :title, 'カテゴリー名' %>
       <br>
       <%= f.text_field :title, class: 'form-control' %>
