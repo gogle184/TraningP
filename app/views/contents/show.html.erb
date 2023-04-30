@@ -3,6 +3,10 @@
     <div class="content-image">
     </div>
     <div class="content-detail">
+      <div class="content-update">
+        <%= link_to "編集", edit_content_path(@content) %>
+        <%= link_to "削除", @content, method: :delete, data: { confirm: "本当に削除しますか?" } %>
+      </div>
       <h2 class="content-title"><%= @content.title %></h2>
       <p class="content-description"><%= @content.description %></p>
       <hr>
