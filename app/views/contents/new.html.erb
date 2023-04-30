@@ -1,21 +1,10 @@
 <div class = "content-create">
   <h1>New Content</h1>
   <%= form_with(model: @content, local: true) do |form| %>
-    <% if @content.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@content.errors.count, "error") %> prohibited this content from being saved:</h2>
-
-        <ul>
-        <% @content.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <div class="field">
       <%= form.label :title %>
       <%= form.text_field :title %>
+      <%= render 'shared/error_messages', object: @content, attribute: :title %>
     </div>
 
     <div class = "field">
@@ -26,6 +15,7 @@
     <div class="field">
       <%= form.label :category_id %>
       <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: '選択してください'} %>
+      <%= render 'shared/error_messages', object: @content, attribute: :category_id %>
     </div>
 
     <div class = "category-message">
@@ -40,6 +30,7 @@
     <div class="field">
       <%= form.label :description %>
       <%= form.text_field :description %>
+      <%= render 'shared/error_messages', object: @content, attribute: :description %>
     </div>
 
     <div class = "field">
@@ -50,6 +41,7 @@
     <div class="field">
       <%= form.label :text %>
       <%= form.rich_text_area :text %>
+      <%= render 'shared/error_messages', object: @content, attribute: :text %>
     </div>
 
     <div class="actions">

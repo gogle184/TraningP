@@ -9,9 +9,11 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @category.admin_id = current_user.admin_id
+    @category.user_id = current_user.id
     if @category.save
       redirect_to categories_path
     else
+      @categories = Category.where(admin_id: current_user.admin_id)
       render 'index'
     end
   end
