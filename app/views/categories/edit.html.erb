@@ -5,13 +5,15 @@
     <%= form_with model: @category, local: true do |f| %>
       <%= f.label :title, 'カテゴリー名' %>
       <br>
-      <%= f.text_field :name, class:'form-control' %>
+      <%= f.text_field :title, class:'form-control' %>
+      <%= render 'shared/error_messages', object: @category, attribute: :title %>
       <br>
       <%= f.label :description, 'カテゴリー説明' %>
       <br>
       <%= f.text_field :description, class:'form-control' %>
+      <%= render 'shared/error_messages', object: @category, attribute: :description %>
       <br>
-      <%= f.submit '保存', class: 'btn btn-primary btn-block' %>
+      <%= f.submit '更新する', class: 'btn btn-primary btn-block' %>
     <% end %>
   </div>
 

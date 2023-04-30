@@ -3,13 +3,15 @@
     <%= form_with model: @category, url: categories_path do |f| %>
       <%= f.label :title, 'カテゴリー名' %>
       <br>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.text_field :title, class: 'form-control', id: 'category-title' %>
+      <%= render 'shared/error_messages', object: @category, attribute: :title %>
       <br>
       <%= f.label :description, 'カテゴリー説明'%>
       <br>
-      <%= f.text_field :description, class: 'form-control' %>
+      <%= f.text_field :description, class: 'form-control', id: 'category-description'%>
+      <%= render 'shared/error_messages', object: @category, attribute: :description %>
       <br>
-      <%= f.submit '追加', class: 'btn btn-primary btn-block' %>
+      <%= f.submit '追加', class: 'btn btn-primary btn-block', id: 'add-category-button', disabled: true %>
     <% end %>
   </div>
   <div class="col-xs-9">
@@ -35,3 +37,15 @@
     </table>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('#category-title, #category-description').on('input', function() {
+      if ($('#category-title').val() && $('#category-description').val()) {
+        $('#add-category-button').prop('disabled', false);
+      } else {
+        $('#add-category-button').prop('disabled', true);
+      }
+    });
+  });
+</script>

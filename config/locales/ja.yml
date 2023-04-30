@@ -8,8 +8,21 @@ ja:
       comment: コメント
       like: いいね
       contact: お問い合わせ
+      content: コンテンツ
+      category: カテゴリー
     attributes:
       # 各モデルのカラム名を記載
+      category:
+        title: タイトル
+        description: 同じ説明
+      content:
+        title: タイトル
+        about: 概要
+        category_id: カテゴリー
+        image: 画像
+        description: 説明
+        video: 動画
+        text: 本文
       user:
         name: 名前
         email: メールアドレス

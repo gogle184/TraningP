@@ -19,12 +19,11 @@ class ContentsController < ApplicationController
     @content = Content.new(content_params)
     @content.user_id = current_user.id
     @content.admin_id = @admin_id
-
     if @content.save
+      flash[:notice] = "新規作成に成功しました"
       redirect_to contents_path
     else
-      Rails.logger.error @content.errors.inspect
-      flash.now[:error] = @content.errors.full_messages.join(", ")
+      flash[:alert] = "エラーを確認してください"
       render 'new'
     end
   end
@@ -32,7 +31,8 @@ class ContentsController < ApplicationController
   def destroy
     @content = Content.find(params[:id])
     @content.destroy
-    redirect_to contents_path, notice: 'コンテンツが削除されました'
+    flash[:notice] = "カテゴリーを削除しました"
+    redirect_to contents_path
   end
 
   private
