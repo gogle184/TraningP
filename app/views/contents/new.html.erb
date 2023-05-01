@@ -7,11 +7,6 @@
       <%= render 'shared/error_messages', object: @content, attribute: :title %>
     </div>
 
-    <div class = "field">
-      <%= form.label :about %>
-      <%= form.text_field :about %>
-    </div>
-
     <div class="field">
       <%= form.label :category_id %>
       <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: '選択してください'} %>
@@ -20,11 +15,6 @@
 
     <div class = "category-message">
       <p>該当するカテゴリーがない場合、<%= link_to 'こちら', categories_path %>から登録してください。</p>
-    </div>
-
-    <div class="field">
-      <%= form.label :image %>
-      <%= form.text_field :image %>
     </div>
 
     <div class="field">
