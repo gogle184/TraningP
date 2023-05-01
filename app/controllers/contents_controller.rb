@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_admin_id
   before_action :set_content,  only: [:edit, :update, :destroy, :show]
   before_action :set_q, only: [:index, :search]
