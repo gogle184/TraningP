@@ -1,3 +1,18 @@
+<aside>
+  <h2>カテゴリー一覧</h2>
+  <ul>
+    <% @categories.each do |category| %>
+      <% if category.contents.present? %>
+      <li><%= link_to category.title, content_path(category.contents.first) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <form>
+    <label for="search">Search:</label>
+    <input type="text" id="search" name="search">
+    <input type="submit" value="Search">
+  </form>
+</aside>
 <div class = "content-wrapper">
   <div class = "content-index-container">
     <% @categories.each do |category| %>
