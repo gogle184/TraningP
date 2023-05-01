@@ -1,6 +1,7 @@
 class ContentsController < ApplicationController
   before_action :set_admin_id
   before_action :set_content,  only: [:edit, :update, :destroy, :show]
+  before_action :set_q, only: [:index, :search]
   
 
   def index
@@ -48,6 +49,10 @@ class ContentsController < ApplicationController
     redirect_to contents_path
   end
 
+  def search
+    @results = @q.result.where(admin_id: current_user.admin_id)
+  end
+
   private
 
   def set_admin_id
@@ -60,6 +65,10 @@ class ContentsController < ApplicationController
 
   def set_content
     @content = Content.find(params[:id])
+  end
+
+  def set_q
+    @q = Content.ransack(params[:q])
   end
 
 end

@@ -7,11 +7,14 @@
       <% end %>
     <% end %>
   </ul>
-  <form>
-    <label for="search">Search:</label>
-    <input type="text" id="search" name="search">
-    <input type="submit" value="Search">
-  </form>
+  <div class = "search">
+    <%= search_form_for @q, url: search_contents_path do |f| %>
+      <%= f.label :title_or_description_gt, 'キーワードを入力してください' %>
+      <%= f.search_field :title_or_description_gt %>
+      <br>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
 </aside>
 <div class = "content-wrapper">
   <div class = "content-index-container">

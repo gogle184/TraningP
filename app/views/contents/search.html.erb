@@ -1,0 +1,22 @@
+<div class = "search-container">
+  <p class="ContentsContainer_result">
+    <h2>検索結果: <%= @results.count(:id)%>件見つかりました</h2>
+  </p>
+  <div class="category-content">
+  <% @results.each do |r|%>
+      <div class = "content-mainWrapper">
+        <div class = "content-wrapper">
+          <div class = "content-header">
+            <div class = "content-title">
+              <%= link_to r.title, content_path(r) %>
+            </div>
+            <div class = "content-description">
+              <%= r.description %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to '一覧に戻る', contents_path %>
+</div>
