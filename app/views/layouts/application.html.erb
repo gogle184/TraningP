@@ -37,21 +37,6 @@
       <p class="alert"><%= alert %></p>
     </div>
     <div class="container">
-    <aside>
-      <h2>カテゴリー一覧</h2>
-      <ul>
-        <% Category.all.each do |category| %>
-          <% if category.contents.present? %>
-          <li><%= link_to category.title, content_path(category.contents.first) %></li>
-          <% end %>
-        <% end %>
-      </ul>
-      <form>
-        <label for="search">Search:</label>
-        <input type="text" id="search" name="search">
-        <input type="submit" value="Search">
-      </form>
-    </aside>
     <main>
       <%= yield %>
       <!-- メインコンテンツ -->
