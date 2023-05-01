@@ -26,7 +26,6 @@
           <ul>
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "Contact", contact_path %></li>
             <li><%= link_to "Login", new_user_session_path %></li>
             <li><%= link_to "Sign up", new_user_registration_path %></li>
           </ul>
@@ -60,7 +59,9 @@
     </div>
     
     <footer>
-      <p>お問い合わせはこちら</p>
+      <p>お問い合わせは
+      <%= link_to "こちら", new_contact_path %>
+      </p>
       <hr>
       <p>@2023 Genki Sato</p>
     </footer>

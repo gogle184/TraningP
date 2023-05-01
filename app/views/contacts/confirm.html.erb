@@ -1,0 +1,24 @@
+<div class="contact-confirm">
+  <table>
+    <tbody>
+      <tr>
+        <td class="text-center" style="width: 30%;">お名前</td>
+        <td><%= @contact.name %></td>
+      </tr>
+      <tr>
+        <td class="text-center">メッセージ</td>
+        <td style="white-space: pre-wrap;"><%= @contact.content %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= form_with(model: @contact, local: true) do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :content %>
+    <div><%= f.submit '送信' %></div>
+    <br>
+    <div><%= link_to "戻る", :back %></div>
+  <% end %>
+</div>
+

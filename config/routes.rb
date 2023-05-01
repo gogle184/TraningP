@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   } 
   
   devise_scope :user do
-    get "user/:id", :to => "users/registrations#detail"
-    get "signup", :to => "users/registrations#new"
-    get "login", :to => "users/sessions#new"
-    get "logout", :to => "users/sessions#destroy"
+    get 'user/:id', :to => 'users/registrations#detail'
+    get 'signup', :to => 'users/registrations#new'
+    get 'login', :to => 'users/sessions#new'
+    get 'logout', :to => 'users/sessions#destroy'
   end
 
   root 'home#index'
@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   resources :contents
   resources :categories, expect: [:new, :show]
   resources :users, only: [:show]
-  
+  resources :contacts, only: [:new, :create]
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
 
   
 end
