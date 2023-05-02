@@ -23,10 +23,12 @@ ja:
         description: 説明
         video: 動画
         text: 本文
+        youtube_url: YoutubeのURL
       user:
         name: 名前
         email: メールアドレス
         password: パスワード
+        admin_id: マネジメントID
       post:
         content: 説明
         image: 画像
