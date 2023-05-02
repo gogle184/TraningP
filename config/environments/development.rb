@@ -52,7 +52,8 @@ config.action_mailer.smtp_settings = {
 }
 
   # Print deprecation notices to the Rails logger.
-  config.active_support.deprecation = :log
+  config.active_support.deprecation = :silence
+
 
   # Raise exceptions for disallowed deprecations.
   config.active_support.disallowed_deprecation = :raise
