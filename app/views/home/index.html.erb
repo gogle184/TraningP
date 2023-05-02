@@ -4,7 +4,11 @@
   </div>
   <h1 class = "welcome" >研修アプリへようこそ</h1>
   <ul class = "content-lists">
+    <% if user_signed_in? && current_user.admin %>
     <li class = "content"><%= link_to "研修一覧",contents_path%></li>
     <li class = "content"><%= link_to "研修作成", new_content_path%></li>
+    <% elsif user_signed_in?  %>
+    <li class = "content"><%= link_to "研修一覧",contents_path%></li>
+    <% end %>
   </ul>
 </div>
