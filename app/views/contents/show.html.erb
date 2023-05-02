@@ -10,6 +10,16 @@
       <h2 class="content-title"><%= @content.title %></h2>
       <p class="content-description"><%= @content.description %></p>
       <hr>
+      <% if @content.video.present? %>
+      <div class = "content-video">
+        <%= video_tag(@content.video.to_s, :size => "400x300", :controls => true)  %>
+      </div>
+      <% end %>
+      <% if @content.youtube_url.present? %>
+      <div class="content-youtube">
+        <iframe src="https://www.youtube.com/embed/<%= @content.youtube_url.last(11) %>" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" width="560"></iframe>
+      </div>
+      <% end %>
       <div class="content-content">
         <%= @content.text %>
       </div>

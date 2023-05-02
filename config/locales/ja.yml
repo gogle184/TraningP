@@ -14,7 +14,7 @@ ja:
       # 各モデルのカラム名を記載
       category:
         title: タイトル
-        description: 同じ説明
+        description: 説明
       content:
         title: タイトル
         about: 概要
