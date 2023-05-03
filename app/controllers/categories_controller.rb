@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :admin_required, except: [:index, :show]
 
   def index
     @category = Category.new
@@ -48,5 +49,12 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:title, :description)
+  end
+
+  def admin_required
+    unless current_user.admin?
+      flash[:alert] = "管理者権限が必要です"
+      redirect_to root_path
+    end
   end
 end
