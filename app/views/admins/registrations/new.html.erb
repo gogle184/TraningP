@@ -23,11 +23,6 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
-      <div class="box-admin">
-        <%= f.label :admin, "マネージャー設定" %><br />
-        <%= f.check_box :admin %>
-      </div>
-
       <div class="box-admin-id">
         <%= f.label :project_id, "マネジメントID" %><br />
         <%= f.text_field :project_id, autocomplete: "project_id" %>

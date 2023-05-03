@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   has_many :contents
   has_many :categories
+  belongs_to :user
 
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable

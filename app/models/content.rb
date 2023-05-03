@@ -6,6 +6,7 @@ class Content < ApplicationRecord
   validate :text_required
 
   belongs_to :user
+  belongs_to :admin
   has_rich_text :text
   belongs_to :category
   mount_uploader :video, VideoUploader
