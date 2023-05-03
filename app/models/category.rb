@@ -5,4 +5,5 @@ class Category < ApplicationRecord
 
   has_many :contents
   belongs_to :user
+  belongs_to :admin
 end

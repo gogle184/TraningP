@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_03_030640) do
+ActiveRecord::Schema.define(version: 2023_05_03_085224) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2023_05_03_030640) do
     t.string "description"
     t.integer "user_id"
     t.string "admin_id", default: "", null: false
+    t.string "project_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -92,6 +93,7 @@ ActiveRecord::Schema.define(version: 2023_05_03_030640) do
     t.string "admin_id", default: "", null: false
     t.string "image"
     t.string "youtube_url"
+    t.string "project_id"
     t.index ["user_id"], name: "index_contents_on_user_id"
   end
 
