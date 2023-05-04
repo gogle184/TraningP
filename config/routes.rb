@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   end
   resources :categories, expect: [:new, :show]
   resources :users, only: [:show]
+  resources :admins, only: [:show]
   resources :contacts, only: [:new, :create]
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
 

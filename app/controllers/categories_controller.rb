@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin_or_user!
   before_action :set_category, only: [:edit, :update, :destroy]
   before_action :set_project_id
-  #before_action :admin_required, except: [:index, :show]
+  before_action :admin_required, except: [:index, :show]
 
   def index
     @category = Category.new
@@ -44,6 +44,17 @@ class CategoriesController < ApplicationController
 
   private
 
+  def authenticate_admin_or_user!
+    if current_admin
+      authenticate_admin!
+    elsif current_user
+      authenticate_user!
+    else
+      flash[:alert] = "ログインが必要です"
+      redirect_to root_path
+    end
+  end
+
   def set_category
     @category = Category.find(params[:id])
   end
@@ -57,7 +68,7 @@ class CategoriesController < ApplicationController
   end
 
   def admin_required
-    unless current_user.admin?
+    unless admin_signed_in?
       flash[:alert] = "管理者権限が必要です"
       redirect_to root_path
     end

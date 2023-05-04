@@ -1,9 +1,9 @@
 class ContentsController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin_or_user!
   before_action :set_project_id
   before_action :set_content,  only: [:edit, :update, :destroy, :show]
   before_action :set_q, only: [:index, :search]
-  #before_action :admin_required, except: [:index, :show]
+  before_action :admin_required, except: [:index, :show]
   
 
   def index
@@ -56,6 +56,17 @@ class ContentsController < ApplicationController
 
   private
 
+  def authenticate_admin_or_user!
+    if current_admin
+      authenticate_admin!
+    elsif current_user
+      authenticate_user!
+    else
+      flash[:alert] = "ログインが必要です"
+      redirect_to root_path
+    end
+  end
+
   def set_project_id
     @project_id = current_user&.project_id || current_admin&.project_id
   end
@@ -73,7 +84,7 @@ class ContentsController < ApplicationController
   end
 
   def admin_required
-    unless current_user.admin? || current_admin.admin?
+    unless admin_signed_in?
       flash[:alert] = "管理者権限が必要です"
       redirect_to root_path
     end

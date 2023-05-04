@@ -2,7 +2,7 @@
   <div class="box-inner">
     <h2>パスワード再設定</h2><p>
     <h2>(マネージャーアカウント専用)</h2>
-    <%= form_with scope: :user, url: user_password_path, local: true do |f| %>
+    <%= form_with scope: :admin, url: admin_password_path, local: true do |f| %>
       <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
