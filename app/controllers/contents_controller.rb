@@ -1,14 +1,14 @@
 class ContentsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_admin_id
+  before_action :authenticate_admin_or_user!
+  before_action :set_project_id
   before_action :set_content,  only: [:edit, :update, :destroy, :show]
   before_action :set_q, only: [:index, :search]
   before_action :admin_required, except: [:index, :show]
   
 
   def index
-    @contents = Content.where(admin_id: current_user.admin_id)
-    @categories = Category.where(admin_id: current_user.admin_id)
+    @contents = Content.where(project_id: @project_id)
+    @categories = Category.where(project_id: @project_id)
   end
 
   def new
@@ -20,8 +20,7 @@ class ContentsController < ApplicationController
 
   def create
     @content = Content.new(content_params)
-    @content.user_id = current_user.id
-    @content.admin_id = @admin_id
+    @content.project_id = @project_id
     if @content.save
       flash[:notice] = "新規作成に成功しました"
       redirect_to contents_path
@@ -52,17 +51,28 @@ class ContentsController < ApplicationController
   end
 
   def search
-    @results = @q.result.where(admin_id: current_user.admin_id)
+    @results = @q.result.where(project_id: @project_id)
   end
 
   private
 
-  def set_admin_id
-    @admin_id = current_user.admin_id
+  def authenticate_admin_or_user!
+    if current_admin
+      authenticate_admin!
+    elsif current_user
+      authenticate_user!
+    else
+      flash[:alert] = "ログインが必要です"
+      redirect_to root_path
+    end
+  end
+
+  def set_project_id
+    @project_id = current_user&.project_id || current_admin&.project_id
   end
 
   def content_params
-    params.require(:content).permit(:title, :about, :category_id, :image, :description, :text, :video, :youtube_url)
+    params.require(:content).permit(:title, :about, :category_id, :image, :description, :text, :video, :youtube_url, :project_id, :admin_id)
   end
 
   def set_content
@@ -74,7 +84,7 @@ class ContentsController < ApplicationController
   end
 
   def admin_required
-    unless current_user.admin?
+    unless admin_signed_in?
       flash[:alert] = "管理者権限が必要です"
       redirect_to root_path
     end

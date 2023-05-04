@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_03_085224) do
+ActiveRecord::Schema.define(version: 2023_05_03_141159) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -69,9 +69,8 @@ ActiveRecord::Schema.define(version: 2023_05_03_085224) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
-    t.integer "user_id"
-    t.string "admin_id", default: "", null: false
-    t.string "project_id"
+    t.string "project_id", default: "", null: false
+    t.integer "admin_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -88,13 +87,11 @@ ActiveRecord::Schema.define(version: 2023_05_03_085224) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
     t.string "video"
-    t.string "admin_id", default: "", null: false
+    t.string "project_id", default: "", null: false
     t.string "image"
     t.string "youtube_url"
-    t.string "project_id"
-    t.index ["user_id"], name: "index_contents_on_user_id"
+    t.integer "admin_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -105,13 +102,11 @@ ActiveRecord::Schema.define(version: 2023_05_03_085224) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "admin_id", default: ""
-    t.boolean "admin", default: false
+    t.string "project_id", default: ""
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "contents", "users"
 end

@@ -22,13 +22,19 @@
             <li><%= link_to "Profile", user_path(current_user) %></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
           </ul>
+        <% elsif admin_signed_in? %>
+          <ul>
+            <li><%= current_admin.email%>(管理者)</li>
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Profile", admin_path(current_admin) %></li>
+            <li><%= link_to "Logout", destroy_admin_session_path, method: :delete %></li>
+          </ul>
         <% else %>
           <ul>
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "Login", new_user_session_path %></li>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
-            <li><%= link_to "admin", new_admin_registration_path %></li>
+            <li><%= link_to "ログインはこちら", new_user_session_path %></li>
+            <li><%= link_to "管理者はこちら", new_admin_session_path %></li>
           </ul>
         <% end %>
       </nav>

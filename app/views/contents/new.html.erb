@@ -1,6 +1,7 @@
 <div class = "content-create">
   <h1>New Content</h1>
   <%= form_with(model: @content, local: true) do |form| %>
+  <%= render 'shared/eerror', object: form.object %>
     <div class="field">
       <%= form.label :title %>
       <%= form.text_field :title %>
@@ -38,7 +39,7 @@
       <%= form.rich_text_area :text %>
       <%= render 'shared/error_messages', object: @content, attribute: :text %>
     </div>
-
+    <%= form.hidden_field :admin_id, value: current_admin.id %>
     <div class="actions">
       <%= form.submit %>
     </div>

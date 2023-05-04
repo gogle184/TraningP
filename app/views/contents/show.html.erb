@@ -4,7 +4,7 @@
     </div>
     <div class="content-detail">
       <div class="content-update">
-      <% if current_user.admin? %>
+      <% if admin_signed_in? %>
         <%= link_to "編集", edit_content_path(@content) %>
         <%= link_to "削除", @content, method: :delete, data: { confirm: "本当に削除しますか?" } %>
       <% end %>
