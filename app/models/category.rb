@@ -4,6 +4,5 @@ class Category < ApplicationRecord
   validates :description, presence: true, length: {maximum: 30},uniqueness: true
 
   has_many :contents
-  belongs_to :user
   belongs_to :admin
 end

@@ -38,12 +38,12 @@
                     <div class = "content-description">
                       <%= content.description %>
                     </div>
-                    <% if current_user.admin? %>
+                      <% if admin_signed_in? %>
                       <div class="content-update">
                         <%= link_to "編集", edit_content_path(content) %>
                         <%= link_to "削除", content, method: :delete, data: { confirm: "本当に削除しますか?" } %>
                       </div>
-                    <% end %>
+                      <% end %>
                   </div>
                 </div>
               </div>

@@ -29,6 +29,8 @@
             <li><%= link_to "Login", new_user_session_path %></li>
             <li><%= link_to "Sign up", new_user_registration_path %></li>
             <li><%= link_to "admin", new_admin_registration_path %></li>
+            <li><%= link_to "Logout", destroy_admin_session_path, method: :delete %></li>
+            <li><%= link_to "Login", new_admin_session_path %></li>
           </ul>
         <% end %>
       </nav>
