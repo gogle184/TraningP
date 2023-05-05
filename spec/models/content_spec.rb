@@ -81,11 +81,11 @@ RSpec.describe Content, type: :model do
     end
 
     it '動画をアップロードできること' do
-      video_path = Rails.root.join('spec', 'fixtures', 'videos', 'test.mp4')
-      file = Rack::Test::UploadedFile.new(video_path, 'video/mp4')
+      video_path = Rails.root.join('spec', 'fixtures', 'videos', 'test.mov')
+      file = Rack::Test::UploadedFile.new(video_path, 'video/mov')
       content.video = file
       expect(content.save).to be true
-      expect(content.video.url).to include('test.mp4')
+      expect(content.video.url).to include('test.mov')
     end
   end
 
