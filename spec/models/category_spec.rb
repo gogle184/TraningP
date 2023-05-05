@@ -9,6 +9,10 @@ RSpec.describe Category, type: :model do
 
   context 'バリデーションについて' do
 
+    it 'タイトル、説明文が規定文字数の場合、有効であること' do
+      expect(category).to be_valid
+    end
+
     it 'タイトルがない場合無効であること'  do
       category.title = nil
       expect(category).not_to be_valid
