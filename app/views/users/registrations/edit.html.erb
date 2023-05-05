@@ -15,14 +15,9 @@
         </div>
       <% end %>
 
-      <div class="box-admin">
-        <%= f.label :admin, "マネージャー設定" %><br />
-        <%= f.check_box :admin %>
-      </div>
-
       <div class="box-admin-id">
-        <%= f.label :admin_id, "マネジメントID" %><br />
-        <%= f.text_field :admin_id, autocomplete: "admin_id" %>
+        <%= f.label :project_id, "マネジメントID" %><br />
+        <%= f.text_field :project_id, autocomplete: "project_id" %>
       </div>
 
       <div class="actions">
