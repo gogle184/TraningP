@@ -3,6 +3,7 @@ class Content < ApplicationRecord
   validates :title, presence: true, length: {in: 4..20}, uniqueness: true
   validates :category_id, presence: true
   validates :description, presence: true, length: {maximum: 30}
+  validates :project_id, presence: true
   validate :text_required
 
   belongs_to :admin

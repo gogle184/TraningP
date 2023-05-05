@@ -5,6 +5,7 @@ FactoryBot.define do
     admin
     category
     category_id {category.id}
+    project_id {admin.project_id}
     text {'テスト文章だよ'}
   end
 end

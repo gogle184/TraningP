@@ -8,7 +8,6 @@ RSpec.describe Category, type: :model do
   let(:content) { FactoryBot.create(:content, admin: admin, category: category) }
 
   context 'バリデーションについて' do
-
     it 'タイトル、説明文が規定文字数の場合、有効であること' do
       expect(category).to be_valid
     end
@@ -55,7 +54,6 @@ RSpec.describe Category, type: :model do
   end
 
   context 'リレーションについて' do
-
     it 'adminモデルとcategoryモデルのproject_idが一致すること' do
       expect(category.project_id).to eq admin.project_id
     end
