@@ -5,12 +5,11 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'
   }
   
-  devise_for :users, controllers: {
+  devise_for :users, path: 'user', controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'   
   }
   
-
   devise_scope :admin do
     get 'admin/:id', :to => 'admins/registrations#detail'
     get 'signup', :to => 'admins/registrations#new'
@@ -38,6 +37,5 @@ Rails.application.routes.draw do
   resources :admins, only: [:show]
   resources :contacts, only: [:new, :create]
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
-
   
 end

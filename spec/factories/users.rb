@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :user do
-    sequence(:email) { |n| 'example#{n}@example.com'}
+    email { 'gogle184@example.com' }
     password { 'password' }
     password_confirmation { 'password' }
-    sequence(:project_id) { |n| 'test#{n}'}
+    project_id { 'testtest' }
+    reset_password_token { "reset_password_token_#{SecureRandom.hex}" }
   end
 end
