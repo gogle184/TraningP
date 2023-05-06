@@ -9,14 +9,14 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
+      <div class="box-admin-id">
+        <%= f.label :project_id, "マネジメントID" %><br />
+        <%= f.text_field :project_id, autocomplete: "project_id", id: "user_project_id" %>
+      </div>
+
       <div class="box-password">
         <%= f.label :current_password,"現在のパスワード"%> <i>(変更を完了するには登録しているパスワードを入力してください)</i><br />
         <%= f.password_field :current_password, autocomplete: "current-password" %>
-      </div>
-
-      <div class="box-admin-id">
-        <%= f.label :project_id, "マネジメントID" %><br />
-        <%= f.text_field :project_id, autocomplete: "project_id" %>
       </div>
 
       <div class="actions">
