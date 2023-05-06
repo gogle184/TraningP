@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :set_new_contact, only: [:confirm, :create, :done]
+  before_action :set_new_contact, only: [:confirm, :create, :back]
 
   def new
     @contact = Contact.new
@@ -21,7 +21,8 @@ class ContactsController < ApplicationController
     end
   end
 
-  def done
+  def back
+    render :new
   end
 
   private

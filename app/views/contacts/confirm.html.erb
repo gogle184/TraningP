@@ -6,6 +6,10 @@
         <td><%= @contact.name %></td>
       </tr>
       <tr>
+        <td class="text-center" style="width: 30%;">メールアドレス</td>
+        <td><%= @contact.email %></td>
+      </tr>
+      <tr>
         <td class="text-center">メッセージ</td>
         <td style="white-space: pre-wrap;"><%= @contact.content %></td>
       </tr>
@@ -18,7 +22,12 @@
     <%= f.hidden_field :content %>
     <div><%= f.submit '送信' %></div>
     <br>
-    <div><%= link_to "戻る", :back %></div>
   <% end %>
+  <%= form_with(model:@contact, url: back_path) do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :content %>
+  <div><%= f.submit '入力画面に戻る' %></div>
+<% end %>
 </div>
 
