@@ -121,8 +121,8 @@ RSpec.describe "ApplicationControllers", type: :system do
 
     scenario 'categories/indexに遷移しないこと' do
       visit categories_path
-      expect(current_path).to eq root_path
-      expect(page).to have_content 'ログインが必要です'
+      expect(current_path).to eq new_admin_session_path
+      expect(page).to have_content 'ログインもしくはアカウント登録してください。'
     end
   end
 end
