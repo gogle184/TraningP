@@ -62,16 +62,6 @@ RSpec.describe "CategoriesControllers", type: :system do
       expect(page).to have_content 'testなんですよ'
     end
 
-    scenario 'カテゴリーの新規作成ができること' do
-      visit categories_path
-      fill_in 'category[title]', with: 'testだよ'
-      fill_in 'category[description]', with: 'testなんですよ'
-      click_button '追加'
-      expect(current_path).to eq categories_path
-      expect(page).to have_content 'testだよ'
-      expect(page).to have_content 'testなんですよ'
-    end
-
     scenario '「カテゴリー名」「カテゴリー説明」の両方の入力がない時、追加ボタンを押せないこと' do
       visit categories_path
       fill_in 'category[title]', with: "カテゴリ失敗"
