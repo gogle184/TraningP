@@ -10,7 +10,7 @@
 
     <div class="field">
       <%= form.label :category_id %>
-      <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: '選択してください'} %>
+      <%= form.collection_select :category_id, Category.where(admin_id: current_admin.id), :id, :title, { prompt: '選択してください'} %>
       <%= render 'shared/error_messages', object: @content, attribute: :category_id %>
     </div>
 
