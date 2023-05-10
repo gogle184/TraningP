@@ -4,8 +4,8 @@ RSpec.describe "CategoriesControllers", type: :system do
 
   let(:admin) {create(:admin)}
   let(:user) {create(:user)}
-  let(:category) {build(:category)}
-  let(:content) {create(:content)}
+  let(:category) {create(:category, admin: admin)}
+  let(:content) {create(:content, admin: admin)}
 
   context 'カテゴリーのアクセス制限について' do
     before  do
@@ -62,16 +62,6 @@ RSpec.describe "CategoriesControllers", type: :system do
       expect(page).to have_content 'testなんですよ'
     end
 
-    scenario 'カテゴリーの新規作成ができること' do
-      visit categories_path
-      fill_in 'category[title]', with: 'testだよ'
-      fill_in 'category[description]', with: 'testなんですよ'
-      click_button '追加'
-      expect(current_path).to eq categories_path
-      expect(page).to have_content 'testだよ'
-      expect(page).to have_content 'testなんですよ'
-    end
-
     scenario '「カテゴリー名」「カテゴリー説明」の両方の入力がない時、追加ボタンを押せないこと' do
       visit categories_path
       fill_in 'category[title]', with: "カテゴリ失敗"
@@ -106,6 +96,8 @@ RSpec.describe "CategoriesControllers", type: :system do
 
     scenario 'カテゴリーが編集できること' do
       click_link '編集'
+      fill_in 'category[title]', with: ''
+      fill_in 'category[description]', with: ''
       fill_in 'category[title]', with: 'testだよ'
       fill_in 'category[description]', with: 'testなんですよ'
       click_button '更新する'

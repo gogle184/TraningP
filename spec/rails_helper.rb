@@ -43,6 +43,26 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  #config.before(:suite) do
+    #DatabaseCleaner.clean_with(:truncation)
+  #end
+
+  #config.before(:each) do
+    #DatabaseCleaner.strategy = :transaction
+  #end
+
+  #config.before(:each, js: true) do
+    #DatabaseCleaner.strategy = :truncation
+  #end
+
+  #config.before(:each) do
+    #DatabaseCleaner.start
+  #end
+
+  #config.after(:each) do
+    #DatabaseCleaner.clean
+  #end
+
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
@@ -53,7 +73,7 @@ RSpec.configure do |config|
   # You can disable this behaviour by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:
   config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :system
   config.extend ControllerMacros, :type => :controller
   #     RSpec.describe UsersController, type: :controller do
   #       # ...
@@ -69,4 +89,5 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include Capybara::DSL
   config.include Warden::Test::Helpers
+  config.include ActionTextHelper, type: :system
 end

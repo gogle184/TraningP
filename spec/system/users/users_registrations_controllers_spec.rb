@@ -6,7 +6,7 @@ RSpec.describe "Users::RegistrationsControllers", type: :system do
   context '新規登録について' do
     scenario 'user(利用者)が新規登録できること' do
       visit new_user_registration_path
-      fill_in 'user[email]', with: 'new@example.com'
+      fill_in 'user[email]', with: 'example@example.com'
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
       fill_in 'user[project_id]', with: 'admin1'
@@ -17,7 +17,7 @@ RSpec.describe "Users::RegistrationsControllers", type: :system do
 
     scenario '不備があると新規登録ができないこと' do
       visit new_user_registration_path
-      fill_in 'user[email]', with: 'new@example.com'
+      fill_in 'user[email]', with: 'example@example.com'
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: ''
       fill_in 'user[project_id]', with: 'admin1'
@@ -51,7 +51,7 @@ RSpec.describe "Users::RegistrationsControllers", type: :system do
     scenario 'user(利用者)が情報を編集できること' do
       login_as(user, :scope => :user)
       visit edit_user_registration_path(user.id)
-      fill_in 'user[email]', with: 'new@example.com'
+      fill_in 'user[email]', with: 'example@example.com'
       fill_in 'user[project_id]', with: '222222'
       fill_in 'user[current_password]', with: 'password' 
       click_button '変更を保存する'
@@ -62,7 +62,7 @@ RSpec.describe "Users::RegistrationsControllers", type: :system do
     scenario '現在のパスワードが不足すると編集できないこと' do
       login_as(user, :scope => :user)
       visit edit_user_registration_path(user.id)
-      fill_in 'user[email]', with: 'new@example.com'
+      fill_in 'user[email]', with: 'example@example.com'
       fill_in 'user[project_id]', with: '111111'
       fill_in 'user[current_password]', with: '' 
       click_button '変更を保存する'
