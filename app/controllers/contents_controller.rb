@@ -46,7 +46,7 @@ class ContentsController < ApplicationController
 
   def destroy
     @content.destroy
-    flash[:notice] = "カテゴリーを削除しました"
+    flash[:notice] = "コンテンツを削除しました"
     redirect_to contents_path
   end
 
