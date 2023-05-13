@@ -13,59 +13,23 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Header styles */
-header {
+.alert {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  flex-wrap: wrap;
-}
-
-.main-image img {
-  width: 100%;
-  height: auto;
-}
-
-#logo {
-  font-size: 24px;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-}
-
-nav ul li {
-  margin-right: 10px;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.flash-notifications {
-  font-weight: bold;
+  justify-content: center;
   text-align: center;
+}
 
-  .notice {
-    background-color: #ADD8E6;
-  }
+.alert svg {
+  margin-right: 0.5rem;
+}
 
-  .alert {
-    background-color: #FF4500;
-  }
-
+footer {
+  background-color: black;
+  color: white;
+  padding: 1rem;
 }
 
 .container {

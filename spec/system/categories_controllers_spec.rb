@@ -50,6 +50,7 @@ RSpec.describe "CategoriesControllers", type: :system do
       fill_in 'admin[email]', with: admin.email
       fill_in 'admin[password]', with: admin.password
       click_button 'ログイン'
+      visit root_path
     end
 
     scenario 'カテゴリーの新規作成ができること' do
