@@ -115,6 +115,15 @@ RSpec.describe "ContentsControllers", type: :system,js: true do
         expect(page).not_to have_content '編集'
         expect(page).not_to have_content '削除'
       end
+
+      scenario 'タイトルをクリックするとコンテンツ詳細にいけること' do
+        click_link '研修一覧'
+        click_link content.title
+        expect(current_path).to eq content_path(content)
+        expect(page).to have_content content.title
+        expect(page).to have_content content.description
+        expect(page).to have_content 'テスト文章だよ'
+      end
     end
   end
 end
