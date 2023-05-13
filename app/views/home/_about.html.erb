@@ -1,0 +1,42 @@
+<div class="about">
+  <div class="about-wrapper">
+    <div class="about-header">
+      <h1>About</h1>
+    </div>
+    <div class="about-introduction">
+      <p>研修メーカーとは、相手に「見てほしい！」教材やコンテンツを共有するアプリです</p>
+    </div>
+  </div>
+  <div class="how-to-page">
+    <div class="how-to-header">
+      <h1>How To Use</h1>
+      <p>「管理者」と「利用者」の２通りの使い方があります</p>
+    </div>
+    <div class="how-to-use">
+      <div class="how-to-use-admin">
+        <h3>コンテンツを共有したい方(管理者)</h3>
+        <div class="admin-description">
+          <p>「管理者はこちら」を押してください</p>
+          <p>必要事項を入力後、作成したマネジメントIDを共有したい方に教えてください</p>
+        </div>
+      </div>
+      <div class="how-to-use-user">
+        <h3>コンテンツを見たい方(利用者)</h3>
+        <div class="user-description">
+          <p>「ログインはこちら」を押してください</p>
+          <p>必要事項を入力後、管理者の方から教えられたマネジメントIDを入力してください</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="from-about-login">
+    <%= link_to new_admin_session_path, class: "btn btn-primary mt-3" do %>
+      <i class="bi bi-person-plus-fill fs-3 me-2"></i>
+      管理者で登録する
+    <% end %>
+    <%= link_to new_user_session_path, class: "btn btn-primary mt-3" do %>
+      <i class="bi bi-person-plus fs-3 me-2"></i>
+      利用者で登録する
+    <% end %>
+  </div>
+</div>

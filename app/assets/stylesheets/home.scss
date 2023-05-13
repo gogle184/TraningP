@@ -22,3 +22,76 @@
 .content:hover {
   transform: scale(1.1);
 }
+
+.about {
+  background-color: #F0F8FF;
+  padding: 40px;
+}
+
+.about-header h1,
+.how-to-header h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.about-introduction p {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.how-to-page {
+  margin-top: 80px;
+}
+
+.how-to-header p {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.how-to-use h3 {
+  font-size: 24px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.how-to-use p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.admin-description,
+.user-description {
+  background-color: #FFF;
+  border: 1px solid #EEE;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 2px 2px 5px #CCC;
+}
+
+.admin-description p,
+.user-description p {
+  margin-bottom: 10px;
+}
+
+.from-about-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.from-about-login .btn {
+  display: flex;
+  align-items: center;
+  margin-right: 5rem;
+}
+
+.from-about-login .btn i {
+  font-size: 2.5rem;
+  margin-right: 0.5rem;
+}
