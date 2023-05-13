@@ -12,37 +12,8 @@
   </head>
 
   <body>
-    <header>
-      <div id="logo">研修メーカー</div>
-      <nav>
-        <% if user_signed_in? %>
-          <ul>
-            <li><%= current_user.email%></li>
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Profile", user_path(current_user) %></li>
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-          </ul>
-        <% elsif admin_signed_in? %>
-          <ul>
-            <li><%= current_admin.email%>(管理者)</li>
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Profile", admin_path(current_admin) %></li>
-            <li><%= link_to "Logout", destroy_admin_session_path, method: :delete %></li>
-          </ul>
-        <% else %>
-          <ul>
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "ログインはこちら", new_user_session_path %></li>
-            <li><%= link_to "管理者はこちら", new_admin_session_path %></li>
-          </ul>
-        <% end %>
-      </nav>
-    </header>
-    <div class="flash-notifications">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/flash' %>
     <div class="container">
     <main>
       <%= yield %>
@@ -59,3 +30,13 @@
     </footer>
   </body>
 </html>
+
+  <script>
+    var navbar = document.querySelector('.navbar');
+    var toggle = navbar.querySelector('.navbar-toggler');
+    var collapse = navbar.querySelector('.navbar-collapse');
+
+    toggle.addEventListener('click', function() {
+      collapse.classList.toggle('show');
+    });
+  </script>
