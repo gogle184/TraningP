@@ -1,5 +1,16 @@
 <div class="user-info">
-  <p>email: <%= @user.email %></p>
-  <p>Project ID: <%= @user.project_id %></p>
-  <%= link_to "アカウントを編集する", edit_user_registration_path, class: "btn btn-primary" %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">ユーザー情報</h5>
+      <div class="user-info-row">
+        <div class="user-info-col">
+          <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
+          <p class="card-text"><strong>Project ID:</strong> <%= @user.project_id %></p>
+        </div>
+        <div class="user-info-col">
+          <%= link_to "アカウントを編集する", edit_user_registration_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
