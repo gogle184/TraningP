@@ -8,6 +8,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.4",
     "rails_admin": "3.1.2",
+    "react_ujs": "^2.7.1",
     "trix": "^1.2.0",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
