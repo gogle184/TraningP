@@ -4,8 +4,8 @@
       <h5 class="card-title">ユーザー情報</h5>
       <div class="user-info-row">
         <div class="user-info-col">
-          <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
-          <p class="card-text"><strong>Project ID:</strong> <%= @user.project_id %></p>
+          <p class="card-text"><strong>Email:</strong> <%= @admin.email %></p>
+          <p class="card-text"><strong>Project ID:</strong> <%= @admin.project_id %></p>
         </div>
         <div class="user-info-col">
           <%= link_to "アカウントを編集する", edit_user_registration_path, class: "btn btn-primary" %>
