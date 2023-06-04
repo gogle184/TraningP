@@ -1,25 +1,28 @@
-<%= react_component("samples/HelloWorld", { greeting: "Hello from react-rails." }) %>
+<div class = "contacts-wrapper">
+  <%= react_component("PageTitle", { title: "お問い合わせフォーム" }) %>
+  <div class = "contacts-form-wrapper">
+    <%= form_with(model: @contact, url: confirm_path, local: true, html: {class: 'needs-validation', novalidate: true}) do |f| %>
+      <div class="form-group">
+        <%= f.label :name, 'お名前*' %>
+        <%= f.text_field :name, class: 'form-control', required: true %>
+        <%= render 'shared/error_messages', object: @contact, attribute: :name %>
+      </div>
 
-<%= form_with(model: @contact, url: confirm_path, local: true, html: {class: 'needs-validation', novalidate: true}) do |f| %>
-  <div class="form-group">
-    <%= f.label :name, 'お名前*' %>
-    <%= f.text_field :name, class: 'form-control', required: true %>
-    <%= render 'shared/error_messages', object: @contact, attribute: :name %>
-  </div>
+      <div class="form-group">
+        <%= f.label :email, 'メール*' %>
+        <%= f.email_field :email, class: 'form-control', required: true %>
+        <%= render 'shared/error_messages', object: @contact, attribute: :email %>
+      </div>
 
-  <div class="form-group">
-    <%= f.label :email, 'メール*' %>
-    <%= f.email_field :email, class: 'form-control', required: true %>
-    <%= render 'shared/error_messages', object: @contact, attribute: :email %>
-  </div>
+      <div class="form-group">
+        <%= f.label :content, 'メッセージ*' %>
+        <%= f.text_area :content, rows: 5, class: 'form-control', required: true %>
+        <%= render 'shared/error_messages', object: @contact, attribute: :content %>
+      </div>
 
-  <div class="form-group">
-    <%= f.label :content, 'メッセージ*' %>
-    <%= f.text_area :content, rows: 5, class: 'form-control', required: true %>
-    <%= render 'shared/error_messages', object: @contact, attribute: :content %>
+      <div>
+        <%= f.submit '入力内容確認', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= f.submit '入力内容確認', class: 'btn btn-primary' %>
-  </div>
-<% end %>
+</div>
