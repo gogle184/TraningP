@@ -3,6 +3,42 @@
   margin-bottom: 16px;
 }
 
+.marker_yellow {
+  background: linear-gradient(transparent 60%, #ffff66 60%);
+}
+
+.container-m {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.rounded-card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.rounded-card .card-img-top {
+  border-radius: 15px 15px 0 0;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-text {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.welcome-header {
+  text-align: center;
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+
+.welcome-header h1 {
+  font-weight: bold;
+}
+
 .content-lists {
   list-style: none;
   display: flex;
@@ -24,7 +60,7 @@
 }
 
 .about {
-  background-color: #F0F8FF;
+  background-color: #FAEBD7;
   padding: 40px;
 }
 
@@ -35,10 +71,14 @@
   text-align: center;
 }
 
-.about-introduction p {
-  font-size: 18px;
-  line-height: 1.6;
+.about-introduction p,
+.how-to-introduction p {
+  font-size: 32px;
+  line-height: 16px;
   text-align: center;
+  margin-top: 24px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
 }
 
 .how-to-page {
@@ -51,10 +91,15 @@
   text-align: center;
 }
 
+.how-to-use {
+  padding-top: 32px;
+}
+
 .how-to-use h3 {
   font-size: 24px;
   margin-top: 40px;
   margin-bottom: 20px;
+  font-weight: 900;
 }
 
 .how-to-use p {
@@ -76,6 +121,8 @@
 .admin-description p,
 .user-description p {
   margin-bottom: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
 }
 
 .from-about-login {
