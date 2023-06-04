@@ -17,6 +17,7 @@
   </div>
 </aside>
 <div class = "content-wrapper">
+  <%= react_component("PageTitle", { title: "コンテンツ一覧" }) %>
   <div class = "content-index-container">
     <% @categories.each do |category| %>
       <% if category.contents.present? %>

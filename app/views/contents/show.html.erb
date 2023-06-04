@@ -3,6 +3,7 @@
     <div class="content-image">
     </div>
     <div class="content-detail">
+      <%= react_component("PageTitle", { title: "コンテンツ詳細" }) %>
       <div class="content-update">
       <% if admin_signed_in? %>
         <%= link_to "編集", edit_content_path(@content) %>
