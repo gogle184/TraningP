@@ -26,8 +26,16 @@
   margin-right: 0.5rem;
 }
 
+.navbar-dark .navbar-nav .nav-link:hover:hover {
+  color: #CCCCCC;
+}
+
+.main-image {
+  background-color: #fff;
+}
+
 footer {
-  background-color: black;
+  background-color: #D2691E;
   color: white;
   padding: 1rem;
 }
@@ -41,8 +49,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f1f1f1;
-  margin: 20px;
+  background-color: #fff;
   flex-grow: 1;
 }
 
