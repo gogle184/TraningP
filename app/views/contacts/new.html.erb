@@ -1,4 +1,5 @@
-<%= react_component("samples/HelloWorld", { greeting: "Hello from react-rails." }) %>
+
+<%= react_component("HelloWorld", { greeting: "Hello from react-rails." }) %>
 
 <%= form_with(model: @contact, url: confirm_path, local: true, html: {class: 'needs-validation', novalidate: true}) do |f| %>
   <div class="form-group">
