@@ -2,14 +2,11 @@
   <div class = "box-inner">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "users/shared/error_messages", resource: resource %>
-      <h2>マネージャーアカウント</h2><p>
-      <h2>新規作成</h2>
-
+      <%= react_component("PageTitle", { title: "会員登録(管理者)" }) %>
       <div class="box-email">
         <%= f.label :email, "メールアドレス" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
-
       <div class="box-password">
         <%= f.label :password, "パスワード" %>
         <% if @minimum_password_length %>
@@ -17,25 +14,20 @@
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
-
       <div class="box-confirm">
         <%= f.label :password_confirmation, "パスワード（確認）" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
-
       <div class="box-admin-id">
         <%= f.label :project_id, "マネジメントID" %><br />
         <%= f.text_field :project_id, autocomplete: "project_id" %>
       </div>
-
       <div class="actions">
         <%= f.submit "アカウントを作成する" %>
       </div>
     <% end %>
-
-    <div class = "login">
-      <p>アカウントをお持ちの方はこちら</p>
-      <%= render "users/shared/links" %>
+    <div class = "actions-link">
+      <p>アカウントをお持ちの方は<%= link_to "こちら", new_session_path(resource_name), class: "devise-link" %></p>
     </div>
   </div>
 </div>
