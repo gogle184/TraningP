@@ -15,6 +15,11 @@
  */
 @import "bootstrap";
 
+.navbar-brand {
+  margin-left: 30px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
 .alert {
   display: flex;
   align-items: center;
@@ -36,8 +41,19 @@
 
 footer {
   background-color: #D2691E;
-  color: white;
+  color: #fff;
   padding: 1rem;
+}
+
+#navbar-footer {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  text-decoration: none;
+  color: #fff;
+  font-size: 32px;
+}
+
+.footer-logo {
+  margin-bottom: 50px;
 }
 
 .container {
