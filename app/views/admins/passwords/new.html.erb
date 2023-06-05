@@ -1,7 +1,6 @@
 <div class="box">
   <div class="box-inner">
-    <h2>パスワード再設定</h2><p>
-    <h2>(マネージャーアカウント専用)</h2>
+  <%= react_component("PageTitle", { title: "パスワード再設定(管理者)" }) %>
     <%= form_with scope: :admin, url: admin_password_path, local: true do |f| %>
       <div class="field">
         <%= f.label :email %><br />
@@ -11,6 +10,9 @@
         <%= f.submit "再設定メールを送信", class: "btn btn-primary" %>
       </div>
     <% end %>
-    <%= render "users/shared/links" %>
+    <div class = "actions-link">
+      <p>ログインは<%= link_to "こちら", new_session_path(resource_name), class: "devise-link" %></p>
+      <p>新期会員登録は<%= link_to "こちら", new_registration_path(resource_name), class: "devise-link" %></p>
+    </div>
   </div>
 </div>

@@ -1,32 +1,29 @@
 <div class = "box">
   <div class = "box-inner">
-    <h2>ログイン</h2>
-
+    <%= react_component("PageTitle", { title: "ログイン(利用者)" }) %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="box-email">
-        <%= f.label :email, "メールアドレス" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-
-      <div class="box-password">
-        <%= f.label :password, "パスワード" %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
-
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me, "ログインを保持する"%>
-        </div>
-      <% end %>
-
-      <div class="actions">
-        <%= f.submit "ログイン" %>
+    <div class="box-email">
+      <%= f.label :email, "メールアドレス" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+    <div class="box-password">
+      <%= f.label :password, "パスワード" %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, "ログインを保持する" %>
       </div>
     <% end %>
-    <div class="actions-admin">
-      <p><%= link_to "パスワードをお忘れですか？", new_password_path(resource_name) %></p>
-      <p><%= link_to "会員登録", new_registration_path(resource_name) %></p>
+    <div class="actions">
+      <%= f.submit "ログイン" %>
+    </div>
+    <% end %>
+    <div class="actions-link">
+      <p>パスワードをお忘れの場合は<%= link_to "こちら", new_password_path(resource_name), class: "devise-link" %></p>
+      <p>会員登録は<%= link_to "こちら", new_registration_path(resource_name), class: "devise-link" %></p>
+      <p>管理者の方は<%= link_to "こちら", new_admin_session_path, class: "devise-link" %></p>
     </div>
   </div>
 </div>

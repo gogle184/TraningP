@@ -7,10 +7,6 @@
   background-color: #fff;
 }
 
-.box-inner {
-  padding: 2rem;
-}
-
 h2 {
   font-size: 2rem;
   font-weight: bold;
@@ -87,4 +83,13 @@ h2 {
 
 .login a:hover {
   text-decoration: underline;
+}
+
+.actions-link {
+  margin-top: 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.devise-link {
+  text-decoration: none;
 }
