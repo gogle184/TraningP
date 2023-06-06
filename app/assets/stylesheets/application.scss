@@ -121,3 +121,10 @@ aside form input[type="submit"] {
 .page-title-react h2 {
   text-align: left;
 }
+
+#error_explanation li {
+  margin-bottom: 8px;
+  text-align: left;
+  color: red;
+  list-style: none;
+}
