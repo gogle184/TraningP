@@ -1,6 +1,6 @@
 <div class="box">
   <div class="box-inner">
-    <%= react_component("PageTitle", { title: "パスワード再設定(利用者)" }) %>
+    <%= react_component("PageTitle", { title: "パスワード再設定" }) %>
     <%= render "users/shared/error_messages", resource: resource %>
     <%= form_with model: @user, url: user_password_path, method: :patch, class: 'registration-main', local: true do |f| %>
       <div class="password-cation">
