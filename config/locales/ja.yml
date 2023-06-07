@@ -24,11 +24,18 @@ ja:
         video: 動画
         text: 本文
         youtube_url: YoutubeのURL
+      admin:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        project_id: マネジメントID
+        admin_id: 管理者
       user:
         name: 名前
         email: メールアドレス
         password: パスワード
-        admin_id: マネジメントID
+        project_id: マネジメントID
+        admin_id: 管理者
       post:
         content: 説明
         image: 画像
