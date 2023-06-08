@@ -1,24 +1,21 @@
 <div class="box">
   <div class="box-inner">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "users/shared/error_messages", resource: resource %>
-      <h2>アカウント情報の編集</h2>
-
+      <%= render "admins/shared/error_messages", resource: resource %>
+      <%= react_component("PageTitle", { title: "アカウント情報編集" }) %>
       <div class="box-email">
         <%= f.label :email, "メールアドレス" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
-
       <div class="box-password">
-        <%= f.label :current_password,"現在のパスワード"%> <i>(変更を完了するには登録しているパスワードを入力してください)</i><br />
+        <%= f.label :current_password,"現在のパスワード"%>
         <%= f.password_field :current_password, autocomplete: "current-password" %>
+        <i>(変更を完了するには登録しているパスワードを入力してください)</i>
       </div>
-
       <div class="actions">
         <%= f.submit "変更を保存する" %>
       </div>
     <% end %>
-
     <div class="login">
       <%= link_to "アカウントを削除する", registration_path(resource_name), method: :delete, data: { confirm: "本当にアカウントを削除しますか？" } %>
     </div>

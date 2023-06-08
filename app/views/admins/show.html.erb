@@ -1,14 +1,15 @@
 <div class="user-info">
+  <%= react_component("PageTitle", { title: "プロフィール" }) %>
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">ユーザー情報</h5>
+      <h5 class="card-title">ユーザー情報(管理者)</h5>
       <div class="user-info-row">
         <div class="user-info-col">
           <p class="card-text"><strong>Email:</strong> <%= @admin.email %></p>
           <p class="card-text"><strong>Project ID:</strong> <%= @admin.project_id %></p>
         </div>
         <div class="user-info-col">
-          <%= link_to "アカウントを編集する", edit_user_registration_path, class: "btn btn-primary" %>
+          <%= link_to "アカウントを編集する", edit_admin_registration_path, class: "btn btn-primary" %>
         </div>
       </div>
     </div>
