@@ -18,7 +18,8 @@ h2 {
 .box-password label,
 .box-confirm label,
 .box-admin label,
-.box-admin-id label {
+.box-admin-id label,
+.box-project-id label {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   display: block;
@@ -27,7 +28,8 @@ h2 {
 .box-email input[type="email"],
 .box-password input[type="password"],
 .box-confirm input[type="password"],
-.box-admin-id input[type="text"] {
+.box-admin-id input[type="text"],
+.box-project-id input[type="text"] {
   width: 100%;
   padding: 1rem;
   border: none;

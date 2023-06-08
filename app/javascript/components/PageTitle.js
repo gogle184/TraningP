@@ -4,9 +4,9 @@ class PageTitle extends React.Component {
   render() {
     return (
       <div className="page-title-react">
-        <h2>
+        <h3>
           {this.props.title}
-        </h2>
+        </h3>
       </div>
     );
   }
