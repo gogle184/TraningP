@@ -1,6 +1,21 @@
 <div class="welcome-board">
-  <div class="main-image">
-    <img src="/assets/main-page.png" class= "img-fluid" style="width: 100">
+  <div class="top">
+    <div class="top-container">
+      <div class="top-container-header">
+        <h1><span class="marker_yellow">研修メーカーを使って</span></h1>
+        <h1><span class="marker_yellow">楽に資料を作ろう！</span></h1>
+      </div>
+      <p>研修メーカーは、誰でも簡単に研修資料を作成、閲覧することができます。</p>
+      <p>文章、画像、動画に対応しているので</p>
+      <p>簡単に資料を作成、閲覧できます。</p>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <%= link_to "管理者でログイン", new_admin_session_path, class: "btn btn-primary", type: "button" %>
+        <%= link_to "利用者でログイン", new_user_session_path, class: "btn btn-primary", type: "button" %>
+        <%= link_to "管理者でゲストログイン", "#", class: "btn btn-outline-warning", type: "button" %>
+        <%= link_to "利用者でゲストログイン", "#", class: "btn btn-outline-warning", type: "button" %>
+      </div>
+
+    </div>
   </div>
   <div class="welcome-header">
     <h1><span class="marker_yellow">３つの時間を無くしませんか？</span></h1>

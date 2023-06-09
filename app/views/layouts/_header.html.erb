@@ -1,6 +1,15 @@
 <header class="navbar navbar-expand-lg navbar-dark" style="background-color: #D2691E;">
   <div class="container-fluid">
     <%= link_to("研修メーカー", root_path, class: "navbar-brand") %>
+      <% if user_signed_in? %>
+        <span class="navbar-text me-auto">
+          <%= current_user.email %>様(利用者)
+        </span>
+      <% elsif admin_signed_in? %>
+        <span class="navbar-text me-auto">
+          <%= current_admin.email %>様(管理者)
+        </span>
+      <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
