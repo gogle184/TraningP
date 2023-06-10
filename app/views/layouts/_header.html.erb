@@ -1,33 +1,39 @@
 <header class="navbar navbar-expand-lg navbar-dark" style="background-color: #D2691E;">
   <div class="container-fluid">
     <%= link_to("研修メーカー", root_path, class: "navbar-brand") %>
+      <% if user_signed_in? %>
+        <span class="navbar-text me-auto">
+          <%= current_user.email %>様(利用者)
+        </span>
+      <% elsif admin_signed_in? %>
+        <span class="navbar-text me-auto">
+          <%= current_admin.email %>様(管理者)
+        </span>
+      <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <%= link_to "ホーム", root_path, class: "nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "お問合せ", new_contact_path, class: "nav-link active" %>
+        </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Home", root_path, class: "nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Profile", user_path(current_user), class: "nav-link active" %>
+            <%= link_to "アカウント情報", user_path(current_user), class: "nav-link active" %>
           </li>
           <li class="nav-item">
             <%= link_to "研修一覧", contents_path, class: "nav-link active" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "お問合せ", new_contact_path, class: "nav-link active" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link active" %>
           </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Home", root_path, class: "nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Profile", admin_path(current_admin), class: "nav-link active" %>
+            <%= link_to "アカウント情報", admin_path(current_admin), class: "nav-link active" %>
           </li>
           <li class="nav-item">
             <%= link_to "研修一覧", contents_path, class: "nav-link active" %>
@@ -36,23 +42,14 @@
             <%= link_to "研修作成", new_content_path, class: "nav-link active" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Logout", destroy_admin_session_path, method: :delete, class: "nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "お問合せ", new_contact_path, class: "nav-link active" %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link active" %>
           </li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "Home", root_path, class: "nav-link active" %>
-          </li>
           <li class="nav-item">
             <%= link_to "ログインはこちら", new_user_session_path, class: "nav-link active" %>
           </li>
           <li class="nav-item">
             <%= link_to "管理者はこちら", new_admin_session_path, class: "nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "お問合せ", new_contact_path, class: "nav-link active" %>
           </li>
         <% end %>
       </ul>
