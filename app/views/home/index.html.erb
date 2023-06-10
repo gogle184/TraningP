@@ -9,12 +9,11 @@
       <p>文章、画像、動画に対応しているので</p>
       <p>簡単に資料を作成、閲覧できます。</p>
       <div class="d-grid gap-2 col-6 mx-auto">
-        <%= link_to "管理者でログイン", new_admin_session_path, class: "btn btn-primary", type: "button" %>
-        <%= link_to "利用者でログイン", new_user_session_path, class: "btn btn-primary", type: "button" %>
-        <%= link_to "管理者でゲストログイン", "#", class: "btn btn-outline-warning", type: "button" %>
-        <%= link_to "利用者でゲストログイン", "#", class: "btn btn-outline-warning", type: "button" %>
+        <%= link_to "管理者でログイン", new_admin_session_path, class: "btn btn-warning", type: "button" %>
+        <%= link_to "利用者でログイン", new_user_session_path, class: "btn btn-warning", type: "button" %>
+        <%= link_to "管理者でゲストログイン", "#", class: "btn btn-outline-info", type: "button" %>
+        <%= link_to "利用者でゲストログイン", "#", class: "btn btn-outline-info", type: "button" %>
       </div>
-
     </div>
   </div>
   <div class="welcome-header">
@@ -24,8 +23,8 @@
     <div class="login-contents">
       <% if admin_signed_in? %>
         <div class="btn-group-vertical d-flex justify-content-center">
-          <%= link_to "研修一覧", contents_path, class: "btn btn-primary" %>
-          <%= link_to "研修作成", new_content_path, class: "btn btn-primary" %>
+          <%= link_to "研修一覧", contents_path, class: "btn btn-warning" %>
+          <%= link_to "研修作成", new_content_path, class: "btn btn-warning" %>
         </div>
       <% elsif user_signed_in? %>
         <div class="btn-group-vertical d-flex justify-content-center">
