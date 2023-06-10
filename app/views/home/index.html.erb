@@ -8,12 +8,14 @@
       <p>研修メーカーは、誰でも簡単に研修資料を作成、閲覧することができます。</p>
       <p>文章、画像、動画に対応しているので</p>
       <p>簡単に資料を作成、閲覧できます。</p>
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <%= link_to "管理者でログイン", new_admin_session_path, class: "btn btn-warning", type: "button" %>
-        <%= link_to "利用者でログイン", new_user_session_path, class: "btn btn-warning", type: "button" %>
-        <%= link_to "管理者でゲストログイン", "#", class: "btn btn-outline-info", type: "button" %>
-        <%= link_to "利用者でゲストログイン", "#", class: "btn btn-outline-info", type: "button" %>
-      </div>
+      <% if !admin_signed_in? && !user_signed_in? %>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <%= link_to "管理者でログイン", new_admin_session_path, class: "btn btn-warning", type: "button" %>
+          <%= link_to "利用者でログイン", new_user_session_path, class: "btn btn-warning", type: "button" %>
+          <%= link_to "管理者でゲストログイン", admins_guest_sign_in_path, method: :post, class: "btn btn-outline-info", type: "button" %>
+          <%= link_to "利用者でゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-outline-info", type: "button" %>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="welcome-header">
