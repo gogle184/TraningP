@@ -1,20 +1,28 @@
-<%= react_component("PageTitle", { title: "コンテンツ一覧" }) %>
+<div class="react-page-title">
+  <%= react_component("PageTitle", { title: "コンテンツ一覧" }) %>
+</div>
 <div class="container">
-  <div class="sidebar">
-    <h2>カテゴリー一覧</h2>
-    <ul>
-      <% @categories.each do |category| %>
-        <% if category.contents.present? %>
-        <li><%= link_to category.title, content_path(category.contents.first) %></li>
+  <div class="sidebar border">
+    <h2 class="fw-bold">カテゴリ</h2>
+    <h2 class="fw-bold">一覧</h2>
+    <hr>
+    <div class="category-short">
+      <ul class="list-unstyled">
+        <% @categories.each do |category| %>
+          <% if category.contents.present? %>
+          <% category_id = "category_#{category.id}" %>
+          <li><a href="#category_<%= category.id %>" class="text-decoration-none"><%= category.title %></a></li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
-    <div class = "search">
+      </ul>
+    </div>
+    <hr>
+    <div class="search">
       <%= search_form_for @q, url: search_contents_path do |f| %>
-        <%= f.label :title_or_description_cont_any, 'キーワードを入力してください' %>
-        <%= f.search_field :title_or_description_cont_any %>
+        <%= f.label :title_or_description_cont_any, 'キーワードを入力してください', class: "fw-bold" %>
+        <%= f.search_field :title_or_description_cont_any, class: "form-control" %>
         <br>
-        <%= f.submit '検索' %>
+        <%= f.submit '検索', class: "btn btn-primary mt-2" %>
       <% end %>
     </div>
   </div>
@@ -22,7 +30,7 @@
     <div class = "content-index-container">
       <% @categories.each do |category| %>
         <% if category.contents.present? %>
-          <div class = "content-index">
+          <div class = "content-index" id="category_<%= category.id %>">
             <div class = "category-title">
               <%= category.title %>
             </div>
@@ -57,3 +65,15 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).ready(function() {
+  $('ul.list-unstyled li a').click(function(e) {
+    e.preventDefault(); 
+    var target = $(this).attr('href');
+    $('html, body').animate({
+      scrollTop: $(target).offset().top
+    }, 20);
+  });
+});
+</script>
