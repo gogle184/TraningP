@@ -1,47 +1,43 @@
 <div class = "content-create">
-  <h1>コンテンツを編集する</h1>
+  <div class="react-page-title">
+    <%= react_component("PageTitle", { title: "コンテンツの編集" }) %>
+  </div>
+  <hr>
   <%= form_with(model: @content, local: true) do |form| %>
-    <div class="field">
+    <div class="content-field">
       <%= form.label :title %>
       <%= form.text_field :title %>
       <%= render 'shared/error_messages', object: @content, attribute: :title %>
     </div>
-
-    <div class="field">
+    <div class="content-field">
       <%= form.label :category_id %>
       <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: '選択してください'} %>
+      <p>該当するカテゴリーがない場合、<%= link_to 'こちら', categories_path %>から登録してください。</p>
       <%= render 'shared/error_messages', object: @content, attribute: :category_id %>
     </div>
-
-    <div class = "category-message">
-      <p>該当するカテゴリーがない場合、<%= link_to 'こちら', categories_path %>から登録してください。</p>
-    </div>
-
-    <div class="field">
+    <div class="content-field">
       <%= form.label :description %>
       <%= form.text_field :description %>
       <%= render 'shared/error_messages', object: @content, attribute: :description %>
     </div>
-
-    <div class = "field">
+    <div class = "content-field">
       <%= form.label :video%>
       <%= form.file_field :video %>
     </div>
-
-    <div class = "field">
+    <div class = "content-field">
       <%= form.label :youtube_url%>
       <%= form.text_field :youtube_url %>
     </div>    
-
-    <div class="field">
+    <div class="content-field">
       <%= form.label :text %>
       <%= form.rich_text_area :text %>
       <%= render 'shared/error_messages', object: @content, attribute: :text %>
     </div>
-
     <div class="actions">
       <%= form.submit %>
     </div>
   <% end %>
+  <hr>
+  <%= link_to "戻る", contents_path%>
 </div>
 

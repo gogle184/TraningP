@@ -1,40 +1,48 @@
-<div class="row">
-  <div class="col-xs-3">
-    <%= form_with model: @category, url: categories_path do |f| %>
-      <%= f.label :title, 'カテゴリー名' %>
-      <br>
-      <%= f.text_field :title, class: 'form-control', id: 'category-title' %>
-      <%= render 'shared/error_messages', object: @category, attribute: :title %>
-      <br>
-      <%= f.label :description, 'カテゴリー説明'%>
-      <br>
-      <%= f.text_field :description, class: 'form-control', id: 'category-description'%>
-      <%= render 'shared/error_messages', object: @category, attribute: :description %>
-      <br>
-      <%= f.submit '追加', class: 'btn btn-primary btn-block', id: 'add-category-button', disabled: true %>
-    <% end %>
+<div class="category-wrapper">
+  <div class="react-page-title">
+    <%= react_component("PageTitle", { title: "カテゴリー一覧" }) %>
   </div>
-  <div class="col-xs-9">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>カテゴリー名</th>
-          <th>カテゴリー説明</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @categories.each do |category| %>
+  <hr>
+  <div class="row">
+    <div class="col-xs-3">
+      <%= form_with model: @category, url: categories_path do |f| %>
+        <%= f.label :title, 'カテゴリー名' %>
+        <br>
+        <%= f.text_field :title, class: 'form-control', id: 'category-title' %>
+        <%= render 'shared/error_messages', object: @category, attribute: :title %>
+        <br>
+        <%= f.label :description, 'カテゴリー説明'%>
+        <br>
+        <%= f.text_field :description, class: 'form-control', id: 'category-description'%>
+        <%= render 'shared/error_messages', object: @category, attribute: :description %>
+        <br>
+        <%= f.submit '追加', class: 'btn btn-primary btn-block', id: 'add-category-button', disabled: true %>
+      <% end %>
+    </div>
+    <div class="col-xs-9">
+      <table class="table category-lists">
+        <thead>
           <tr>
-            <td><%= category.title %></td>
-            <td><%= category.description %></td>
-            <td><%= link_to '編集', edit_category_path(category), class: 'btn-sm btn-primary' %></td>
-            <td><%= link_to '削除', category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn-sm btn-danger' %></td>
+            <th>カテゴリー名</th>
+            <th>カテゴリー説明</th>
+            <th></th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.title %></td>
+              <td><%= category.description %></td>
+              <td><%= link_to '編集', edit_category_path(category), class: 'btn-sm btn-primary' %></td>
+              <td><%= link_to '削除', category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn-sm btn-danger' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <hr>
+    <%= link_to "戻る", :back %>
   </div>
 </div>
 
