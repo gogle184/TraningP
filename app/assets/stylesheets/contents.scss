@@ -61,6 +61,10 @@
   width: 100%;
 }
 
+.content-content {
+  margin-top: 20px;
+}
+
 /* コンテンツのタイトルと説明 */
 .content-header {
   display: flex;
@@ -93,6 +97,13 @@
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
+}
+
+.content-detail {
+  margin-left: 20px;
+  background-color: #FAEBD7;
+  border: 2px solid #ccc;
+  padding: 10px;
 }
 
 /* Aside styles */
