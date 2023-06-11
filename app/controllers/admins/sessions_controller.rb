@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class Admins::SessionsController < Devise::SessionsController
+  def guest_sign_in
+    admin = Admin.guest
+    sign_in admin
+    redirect_to root_path, notice: 'ゲストユーザー（管理者）としてログインしました。'
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

@@ -34,20 +34,22 @@
       </div>
     </div>
   </div>
-  <div class="from-about-login">
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <%= link_to new_admin_session_path, class: "btn btn-warning mt-3 btn-block" do %>
-        <i class="bi bi-person-plus-fill fs-3 me-2"></i>
-        管理者で登録する
-      <% end %>
+  <% if !admin_signed_in? && !user_signed_in? %>
+    <div class="from-about-login">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <%= link_to new_admin_registration_path, class: "btn btn-warning mt-3 btn-block" do %>
+            <i class="bi bi-person-plus-fill fs-3 me-2"></i>
+            管理者で登録する
+          <% end %>
+        </div>
+        <div class="col-12 col-md-6">
+          <%= link_to new_user_registration_path, class: "btn btn-warning mt-3 btn-block" do %>
+            <i class="bi bi-person-plus fs-3 me-2"></i>
+            利用者で登録する
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div class="col-12 col-md-6">
-      <%= link_to new_user_session_path, class: "btn btn-warning mt-3 btn-block" do %>
-        <i class="bi bi-person-plus fs-3 me-2"></i>
-        利用者で登録する
-      <% end %>
-    </div>
-  </div>
-</div>
+  <% end %>
 </div>

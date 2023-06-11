@@ -9,4 +9,12 @@ class Admin < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
+
+  def self.guest
+    find_or_create_by!(email: 'guest_admin@example.com') do |admin|
+      admin.password = ENV['GUEST_ADMIN_PASSWORD']
+      admin.password_confirmation = ENV['GUEST_ADMIN_PASSWORD']
+      admin.project_id = ENV['GUEST_PROID']
+    end
+  end
 end
