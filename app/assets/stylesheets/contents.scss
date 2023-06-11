@@ -1,16 +1,15 @@
 /* コンテンツの大枠 */
-.main-page {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 0 10px;
+.react-page-title {
+  padding-left: 30px;
 }
 
-.content-guide {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  max-width: 100%;
+.hr {
+  height: 1px;
+}
+
+
+.category-title {
+  font-weight: 700;
 }
 
 .category-title,
@@ -28,9 +27,11 @@
 .content-index {
   max-width: 800px;
   width: 100%;
-  margin: 0 auto;
+  margin-bottom: 16px;
   border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 10px;
+  background-color: #FAEBD7;
 }
 
 /* コンテンツのタイトル */
@@ -88,7 +89,33 @@
   margin: 0 auto;
   box-sizing: border-box;
   /* 枠線を含めた幅にするために必要 */
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
+  border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
+}
+
+/* Aside styles */
+.sidebar {
+  width: 40%;
+  margin-right: 20px;
+  background-color: #FAEBD7;
+  border-radius: 5px;
+  color: #333;
+  padding: 10px;
+}
+
+.category-short {
+  margin-top: 20px;
+}
+
+.category-short ul li {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
 }
