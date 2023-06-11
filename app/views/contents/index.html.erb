@@ -1,57 +1,59 @@
-<aside>
-  <h2>カテゴリー一覧</h2>
-  <ul>
-    <% @categories.each do |category| %>
-      <% if category.contents.present? %>
-      <li><%= link_to category.title, content_path(category.contents.first) %></li>
+<%= react_component("PageTitle", { title: "コンテンツ一覧" }) %>
+<div class="container">
+  <div class="sidebar">
+    <h2>カテゴリー一覧</h2>
+    <ul>
+      <% @categories.each do |category| %>
+        <% if category.contents.present? %>
+        <li><%= link_to category.title, content_path(category.contents.first) %></li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-  <div class = "search">
-    <%= search_form_for @q, url: search_contents_path do |f| %>
-      <%= f.label :title_or_description_cont_any, 'キーワードを入力してください' %>
-      <%= f.search_field :title_or_description_cont_any %>
-      <br>
-      <%= f.submit '検索' %>
-    <% end %>
+    </ul>
+    <div class = "search">
+      <%= search_form_for @q, url: search_contents_path do |f| %>
+        <%= f.label :title_or_description_cont_any, 'キーワードを入力してください' %>
+        <%= f.search_field :title_or_description_cont_any %>
+        <br>
+        <%= f.submit '検索' %>
+      <% end %>
+    </div>
   </div>
-</aside>
-<div class = "content-wrapper">
-  <%= react_component("PageTitle", { title: "コンテンツ一覧" }) %>
-  <div class = "content-index-container">
-    <% @categories.each do |category| %>
-      <% if category.contents.present? %>
-        <div class = "content-index">
-          <div class = "category-title">
-            <%= category.title %>
-          </div>
-          <div class = "category-description">
-            <%= category.description %>
-          </div>
-          <div class="category-content">
-            <% category.contents.each do |content| %>
-              <div class = "content-mainWrapper">
-                <div class = "content-wrapper">
-                  <div class = "content-header">
-                    <div class = "content-title">
-                      <%= link_to content.title, content_path(content) %>
-                    </div>
-                    <div class = "content-description">
-                      <%= content.description %>
-                    </div>
-                      <% if admin_signed_in? %>
-                      <div class="content-update">
-                        <%= link_to "編集", edit_content_path(content) %>
-                        <%= link_to "削除", content, method: :delete, data: { confirm: "本当に削除しますか?" } %>
+  <div class = "content-wrapper">
+    <div class = "content-index-container">
+      <% @categories.each do |category| %>
+        <% if category.contents.present? %>
+          <div class = "content-index">
+            <div class = "category-title">
+              <%= category.title %>
+            </div>
+            <div class = "category-description">
+              <%= category.description %>
+            </div>
+            <div class="category-content">
+              <% category.contents.each do |content| %>
+                <div class = "content-mainWrapper">
+                  <div class = "content-wrapper">
+                    <div class = "content-header">
+                      <div class = "content-title">
+                        <%= link_to content.title, content_path(content) %>
                       </div>
-                      <% end %>
+                      <div class = "content-description">
+                        <%= content.description %>
+                      </div>
+                        <% if admin_signed_in? %>
+                        <div class="content-update">
+                          <%= link_to "編集", edit_content_path(content) %>
+                          <%= link_to "削除", content, method: :delete, data: { confirm: "本当に削除しますか?" } %>
+                        </div>
+                        <% end %>
+                    </div>
                   </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
