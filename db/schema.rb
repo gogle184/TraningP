@@ -12,11 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2023_05_03_141159) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
+  enable_extension "plpgsql"
+
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
     t.string "record_type", null: false
-    t.integer "record_id", null: false
+    t.bigint "record_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
@@ -69,7 +73,6 @@ ActiveRecord::Schema.define(version: 2023_05_03_141159) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
-    t.string "project_id", default: "", null: false
     t.integer "admin_id"
   end
 
@@ -88,7 +91,6 @@ ActiveRecord::Schema.define(version: 2023_05_03_141159) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "video"
-    t.string "project_id", default: "", null: false
     t.string "image"
     t.string "youtube_url"
     t.integer "admin_id"
