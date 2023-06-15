@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2023_05_03_141159) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
     t.integer "admin_id"
+    t.string "project_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -94,6 +95,7 @@ ActiveRecord::Schema.define(version: 2023_05_03_141159) do
     t.string "image"
     t.string "youtube_url"
     t.integer "admin_id"
+    t.string "project_id"
   end
 
   create_table "users", force: :cascade do |t|
