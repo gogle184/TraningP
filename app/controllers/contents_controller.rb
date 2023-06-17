@@ -21,6 +21,7 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     @content.project_id = @project_id
+    @content.admin_id = current_admin.id
     if @content.save
       flash[:notice] = "新規作成に成功しました"
       redirect_to contents_path

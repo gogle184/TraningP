@@ -11,14 +11,14 @@ RSpec.describe "ApplicationControllers", type: :system do
     end
 
     scenario '非ログイン時、ヘッダー情報が表示されていること' do
-      expect(page).to have_content 'Home'
-      expect(page).to have_content 'About'
+      expect(page).to have_content 'ホーム'
+      expect(page).to have_content 'お問い合わせ'
       expect(page).to have_content 'ログインはこちら'
       expect(page).to have_content '管理者はこちら'
     end
 
     scenario 'HOMEをクリックするとHome画面に移動すること' do
-      click_link 'Home'
+      click_link 'ホーム'
       expect(current_path).to eq root_path
     end
 
@@ -43,19 +43,24 @@ RSpec.describe "ApplicationControllers", type: :system do
 
     scenario 'ログイン後、userのヘッダー情報が表示されていること' do
       expect(page).to have_content user.email 
-      expect(page).to have_content 'Profile'
-      expect(page).to have_content 'Logout'
+      expect(page).to have_content 'アカウント情報'
+      expect(page).to have_content 'ログアウト'
     end
 
-    scenario 'Profileをクリックすると、現在のuserの詳細ページが表示されること' do
-      click_link 'Profile'
+    scenario 'アカウント情報をクリックすると、現在のuserの詳細ページが表示されること' do
+      click_link 'アカウント情報'
       expect(current_path).to eq user_path(user)
     end
 
-    scenario 'Logoutをクリックするとログアウトされること' do
-      click_link 'Logout'
+    scenario 'ログアウトをクリックするとログアウトされること' do
+      click_link 'ログアウト'
       expect(current_path).to eq root_path
       expect(page).to have_content 'ログアウトしました。'
+    end
+
+    scenario 'お問い合わせをクリックするとフォームに飛ぶこと' do
+      click_link 'お問い合わせ'
+      expect(current_path).to eq new_contact_path
     end
   end
 
@@ -67,21 +72,26 @@ RSpec.describe "ApplicationControllers", type: :system do
       click_button 'ログイン'
     end
 
-    scenario 'ログイン後、userのヘッダー情報が表示されていること' do
+    scenario 'ログイン後、adminのヘッダー情報が表示されていること' do
       expect(page).to have_content admin.email 
-      expect(page).to have_content 'Profile'
-      expect(page).to have_content 'Logout'
+      expect(page).to have_content 'アカウント情報'
+      expect(page).to have_content 'ログアウト'
     end
 
-    scenario 'Profileをクリックすると、現在のuserの詳細ページが表示されること' do
-      click_link 'Profile'
+    scenario 'Profileをクリックすると、現在のadminの詳細ページが表示されること' do
+      click_link 'アカウント情報'
       expect(current_path).to eq admin_path(admin)
     end
 
-    scenario 'Logoutをクリックするとログアウトされること' do
-      click_link 'Logout'
+    scenario 'ログアウトをクリックするとログアウトされること' do
+      click_link 'ログアウト'
       expect(current_path).to eq root_path
       expect(page).to have_content 'ログアウトしました'
+    end
+
+    scenario 'お問い合わせをクリックするとフォームに飛ぶこと' do
+      click_link 'お問い合わせ'
+      expect(current_path).to eq new_contact_path
     end
   end
 
@@ -91,7 +101,7 @@ RSpec.describe "ApplicationControllers", type: :system do
     end
 
     scenario '「こちら」を押すとお問い合わせフォームに飛べること' do
-      click_link 'こちら'
+      click_link 'footer-link'
       expect(current_path).to eq new_contact_path
     end
   end
