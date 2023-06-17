@@ -1,4 +1,4 @@
-name: Ruby Tests
+name: Rspec
 
 on:
   push:
@@ -55,13 +55,10 @@ jobs:
 
     - name: database setup
       run: |
-        mv config/database.org config/database.yml
-        mv config/secrets.org config/secrets.yml
+        mv config/database.yml
+        bundle exec rails db:create RAILS_ENV=test
         bundle exec rails db:migrate RAILS_ENV=test
 
     # Rspec実行
     - name: run Rspec
-      run: bundle exec rspec
-
-    - name: Run RSpec tests
       run: bundle exec rspec
