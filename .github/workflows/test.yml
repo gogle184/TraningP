@@ -3,11 +3,9 @@ name: Ruby Tests
 on:
   push:
     branches:
-      - main
       - develop
   pull_request:
     branches:
-      - main
       - develop
 
 jobs:
@@ -21,14 +19,17 @@ jobs:
     - name: Set up Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 3.1.2
+        ruby-version: 2.7.x
 
     - name: Set up Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: 16.20.0
+        node-version: 14.x
 
-    - name: check dirctory
+    - name: check Ruby version
+      run: ruby -v
+
+    - name: check directory
       run: |
         pwd
         bundler -v
@@ -39,7 +40,6 @@ jobs:
         gem install sqlite3 -v '1.4.2' --source 'https://rubygems.org/'
         dpkg -L libsqlite3-dev
 
-    # Gemキャッシュ
     - name: Cache gems
       uses: actions/cache@v2
       with:
@@ -50,15 +50,18 @@ jobs:
 
     - name: Install dependencies
       run: |
-        gem install bundler
+        bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-        npm install
 
     - name: database setup
       run: |
         mv config/database.org config/database.yml
         mv config/secrets.org config/secrets.yml
         bundle exec rails db:migrate RAILS_ENV=test
+
+    # Rspec実行
+    - name: run Rspec
+      run: bundle exec rspec
 
     - name: Run RSpec tests
       run: bundle exec rspec
