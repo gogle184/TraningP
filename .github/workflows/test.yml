@@ -26,6 +26,20 @@ jobs:
       with:
         node-version: 14.x
 
+    - name: Set up Chrome
+      run: |
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb
+        sudo apt-get install -f
+
+        LATEST_CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+        wget https://chromedriver.storage.googleapis.com/$LATEST_CHROMEDRIVER_VERSION/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        chmod +x chromedriver
+        sudo mv chromedriver /usr/local/bin/
+
+        sudo apt-get install -y libgconf-2-4
+
     - name: check Ruby version
       run: ruby -v
 
@@ -60,4 +74,7 @@ jobs:
 
     # Rspec実行
     - name: run Rspec
+      env:
+        S3_ACCESS_KEY: ${{ secrets.S3_ACCESS_KEY }}
+        S3_SECRET_KEY: ${{ secrets.S3_SECRET_KEY }}
       run: bundle exec rspec
