@@ -25,12 +25,12 @@
     <div class="login-contents">
       <% if admin_signed_in? %>
         <div class="btn-group-vertical d-flex justify-content-center">
-          <%= link_to "研修一覧", contents_path, class: "btn btn-warning" %>
-          <%= link_to "研修作成", new_content_path, class: "btn btn-warning" %>
+          <%= link_to "研修を見る", contents_path, class: "btn btn-warning" %>
+          <%= link_to "研修を作成する", new_content_path, class: "btn btn-warning" %>
         </div>
       <% elsif user_signed_in? %>
         <div class="btn-group-vertical d-flex justify-content-center">
-          <%= link_to "研修一覧", contents_path, class: "btn btn-primary mt-3" %>
+          <%= link_to "研修を見る", contents_path, class: "btn btn-primary mt-3" %>
         </div>
       <% end %>
     </div>

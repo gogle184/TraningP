@@ -10,9 +10,9 @@ RSpec.describe "AdminsControllers", type: :system do
       fill_in 'admin[email]', with: admin.email
       fill_in 'admin[password]', with: admin.password
       click_button 'ログイン'
-      expect(current_path).to eq root_path
+      expect(current_path).to eq contents_path
       expect(page).to have_content 'ログインしました'
-      click_link 'Profile'
+      click_link 'アカウント情報'
       expect(current_path).to eq admin_path(admin)
       expect(page).to have_content(admin.email)
       expect(page).to have_content(admin.project_id)

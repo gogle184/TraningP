@@ -11,7 +11,7 @@ RSpec.describe "Admins::RegistrationsControllers", type: :system do
         fill_in 'admin[project_id]', with: 'test123'
         click_button 'アカウントを作成する'
       
-        expect(current_path).to eq root_path
+        expect(current_path).to eq contents_path
         expect(page).to have_content 'アカウント登録が完了しました'
       end
   
@@ -24,7 +24,7 @@ RSpec.describe "Admins::RegistrationsControllers", type: :system do
         click_button 'アカウントを作成する'
       
         expect(current_path).to eq admin_registration_path
-        expect(page).to have_content '保存されませんでした'
+        expect(page).to have_content 'パスワード（確認用）とパスワードの入力が一致しません'
       end
     end
   
@@ -38,7 +38,7 @@ RSpec.describe "Admins::RegistrationsControllers", type: :system do
         fill_in 'admin[email]', with: admin.email
         fill_in 'admin[password]', with: admin.password
         click_button 'ログイン'
-        expect(current_path).to eq root_path
+        expect(current_path).to eq contents_path
         expect(page).to have_content 'ログインしました'
       end
   
@@ -48,7 +48,7 @@ RSpec.describe "Admins::RegistrationsControllers", type: :system do
         fill_in 'admin[password]', with: ''
         click_button 'ログイン'
         expect(current_path).to eq new_admin_session_path
-        expect(page).to have_content 'Eメールまたはパスワードが違います'
+        expect(page).to have_content 'メールアドレスまたはパスワードが違います'
       end
     end
   
@@ -56,7 +56,7 @@ RSpec.describe "Admins::RegistrationsControllers", type: :system do
       scenario 'admin(管理者)が情報を編集できること' do
         login_as(admin)
         visit root_path
-        click_link 'Profile'
+        click_link 'アカウント情報'
         click_link 'アカウントを編集する'
         fill_in 'admin[email]', with: 'gogo@example.com'
         fill_in 'admin[current_password]', with: 'password' 
@@ -73,7 +73,7 @@ RSpec.describe "Admins::RegistrationsControllers", type: :system do
         click_button '変更を保存する'
       
         expect(current_path).to eq admin_registration_path
-        expect(page).to have_content '保存されませんでした'
+        expect(page).to have_content '現在のパスワードを入力してください'
       end
     end
 end

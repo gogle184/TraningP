@@ -11,7 +11,7 @@ RSpec.describe "Users::RegistrationsControllers", type: :system do
       fill_in 'user[password_confirmation]', with: 'password'
       fill_in 'user[project_id]', with: 'admin1'
       click_button 'アカウントを作成する'
-      expect(current_path).to eq root_path
+      expect(current_path).to eq contents_path
       expect(page).to have_content 'アカウント登録が完了しました'
     end
 
@@ -23,7 +23,7 @@ RSpec.describe "Users::RegistrationsControllers", type: :system do
       fill_in 'user[project_id]', with: 'admin1'
       click_button 'アカウントを作成する'
       expect(current_path).to eq user_registration_path
-      expect(page).to have_content '保存されませんでした'
+      expect(page).to have_content 'パスワード（確認用）とパスワードの入力が一致しません'
     end
   end
 
@@ -33,7 +33,7 @@ RSpec.describe "Users::RegistrationsControllers", type: :system do
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'ログイン'
-      expect(current_path).to eq root_path
+      expect(current_path).to eq contents_path
       expect(page).to have_content 'ログインしました'
     end
 
@@ -67,7 +67,7 @@ RSpec.describe "Users::RegistrationsControllers", type: :system do
       fill_in 'user[current_password]', with: '' 
       click_button '変更を保存する'
       expect(current_path).to eq user_registration_path
-      expect(page).to have_content '保存されませんでした'
+      expect(page).to have_content '現在のパスワードを入力してください'
     end
   end
 end

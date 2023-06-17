@@ -1,0 +1,55 @@
+name: RSpec
+
+on: 
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_ENV: test
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install
+      run: |
+        sudo apt-get update && sudo apt-get install -y curl build-essential git sqlite3 libsqlite3-dev
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1.2
+        bundler-cache: true
+
+    - name: Restore test results
+      id: 'restore_test_results'
+      uses: actions/cache/restore@v3
+      with:
+        path: tmp/spec_examples.txt
+        key: ${{ runner.os }}-rspec-examples-${{ github.event.pull_request.number }}-${{ hashFiles('tmp/spec_examples.txt') }}
+        restore-keys: ${{ runner.os }}-rspec-examples-${{ github.event.pull_request.number }}-
+
+    - name: Run Rspec only failures
+      run: |
+        if [[ -e tmp/spec_examples.txt && $(grep -c 'failed' tmp/spec_examples.txt) -gt 0 ]]; then
+          grep -E "(example_id)|(---)|(failed)" tmp/spec_examples.txt
+          bundle exec rspec --format progress --only-failures
+        fi
+
+    - name: Run RSpec
+      run: |
+        bundle exec rspec
+
+    - name: Cache test results
+      if: always()
+      uses: actions/cache/save@v3
+      with:
+        path: tmp/spec_examples.txt
+        key: ${{ runner.os }}-rspec-examples-${{ github.event.pull_request.number }}-${{ hashFiles('tmp/spec_examples.txt') }}

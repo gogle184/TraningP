@@ -10,9 +10,9 @@ RSpec.describe "UsersControllers", type: :system do
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'ログイン'
-      expect(current_path).to eq root_path
+      expect(current_path).to eq contents_path
       expect(page).to have_content 'ログインしました'
-      click_link 'Profile'
+      click_link 'アカウント情報'
       expect(current_path).to eq user_path(user)
       expect(page).to have_content(user.email)
       expect(page).to have_content(user.project_id)

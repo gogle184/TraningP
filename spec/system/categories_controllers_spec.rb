@@ -25,7 +25,7 @@ RSpec.describe "CategoriesControllers", type: :system do
       fill_in 'admin[password]', with: admin.password
       click_button 'ログイン'
       click_link '研修作成'
-      click_link 'ここ'
+      click_link 'category-link'
       expect(current_path).to eq categories_path
       expect(page).to have_content 'カテゴリー名'
     end
