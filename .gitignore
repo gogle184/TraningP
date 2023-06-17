@@ -42,3 +42,6 @@ yarn-debug.log*
 .env
 /public/uploads
 /vendor/bundle
+
+#保留
+test.yml
