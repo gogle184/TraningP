@@ -5,8 +5,6 @@ ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7', '>= 6.1.7.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -35,6 +33,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem 'faker'
   gem 'database_cleaner'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
@@ -56,6 +55,10 @@ group :test do
   gem 'webdrivers'
 end
 
+group :production do
+  gem 'pg'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -71,3 +74,5 @@ gem 'ransack'
 gem 'bootstrap', '~> 5.0.1'
 gem 'jquery-rails'
 gem 'react-rails'
+gem 'fog-aws'
+gem "aws-sdk-s3", require: false 
