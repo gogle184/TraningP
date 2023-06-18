@@ -54,14 +54,6 @@ Content.create(
   admin_id: 1
 )
 Content.create(
-  title: '保護具の着用について',
-  category_id: 3,
-  description: '怪我をしないためにも保護具の着用は必須です。',
-  video:File.open("./public/uploads/videos/sample.mp4"),
-  project_id: ENV['GUEST_PROID'],
-  admin_id: 1
-)
-Content.create(
   title: '【工具】インパクトについて',
   category_id: 3,
   description: '4Sとはどこの作業場にも関係する問題です。',
