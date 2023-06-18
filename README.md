@@ -4,7 +4,7 @@
 簡単作業で研修マニュアルをいち早く作成することができます。
 https://kensyu-maker.herokuapp.com/
 
-![全体のやつ](https://github.com/gogle184/TraningP/assets/114890397/a51459c1-139c-45a3-9212-52b556762a49)
+![全体（２）](https://github.com/gogle184/TraningP/assets/114890397/84c42d77-f0b0-49de-aea2-063c8304ee06)
 
 <br>
 
@@ -27,15 +27,17 @@ https://kensyu-maker.herokuapp.com/
 
 ### 管理者(研修担当側)の場合
 
-![admin会員登録](https://github.com/gogle184/TraningP/assets/114890397/25a2d55d-c5d2-468d-8db9-f120a56ed216)
+![admin登録(2)](https://github.com/gogle184/TraningP/assets/114890397/8fb0fa6d-7a3b-48dd-a133-4158181ed2fb)
 
 1. アプリを開き、ログインまたは会員登録を押してください。
 2. 研修作成を押してください。
 3. カテゴリー項目は必須項目ですので作成していない場合、ページから指定のリンクからカテゴリーを選択してください。
 
-![コンテンツ作成](https://github.com/gogle184/TraningP/assets/114890397/090d3f5b-06fd-487a-980b-51f769babecc)
+![コンテンツ(2)](https://github.com/gogle184/TraningP/assets/114890397/9b606152-1572-4a32-93a3-f8787e681b7a)
 
 4. 必要事項を入力後、コンテンツ一覧画面に戻るのでコンテンツを確認してください。
+
+<br>
 
 ### 利用者(研修を受ける側)の場合
 
@@ -112,6 +114,8 @@ https://github.com/gogle184/TraningP/pull/49
   - 読み込み
   - 更新
   - 削除
+  - 投稿検索機能
+  - スクロールイベント
 - お問い合わせ機能
   - お問い合わせ作成
   - 送信前確認画面
