@@ -11,7 +11,7 @@
     </div>
     <div class="content-field">
       <%= form.label :category_id %>
-      <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: '選択してください'} %>
+      <%= form.collection_select :category_id, Category.where(project_id: @project_id), :id, :title, { prompt: '選択してください' } %>
       <p>該当するカテゴリーがない場合、<%= link_to 'こちら', categories_path, id: 'category-link'%>から登録してください。</p>
       <%= render 'shared/error_messages', object: @content, attribute: :category_id %>
     </div>
