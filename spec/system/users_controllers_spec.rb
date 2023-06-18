@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "UsersControllers", type: :system do
-
-  let(:user) {create(:user)}
+RSpec.describe 'UsersControllers', type: :system do
+  let(:user) { create(:user) }
 
   context 'user(利用者)の詳細が見れること' do
     scenario '詳細ページに情報があること' do

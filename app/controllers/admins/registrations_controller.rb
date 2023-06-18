@@ -40,19 +40,18 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
+
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:admin, :project_id])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i(admin project_id))
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:admin, :project_id])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i(admin project_id))
   end
 
   def ensure_normal_user
-    if resource.email == 'guest_admin@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーは削除できません'
-    end
+    redirect_to root_path, alert: 'ゲストユーザーは削除できません' if resource.email == 'guest_admin@example.com'
   end
 
   # If you have extra params to permit, append them to the sanitizer.

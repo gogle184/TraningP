@@ -7,13 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # -*- coding: utf-8 -*-
 
-Admin.create(id: 1, email: 'guest_admin@example.com', password: ENV['GUEST_ADMIN_PASSWORD'], project_id: ENV['GUEST_PROID'])
+Admin.create(id: 1, email: 'guest_admin@example.com', password: ENV['GUEST_ADMIN_PASSWORD'],
+             project_id: ENV['GUEST_PROID'])
 
-User.create(id: 1, email: 'guest_user@example.com', password: ENV['GUEST_USER_PASSWORD'], project_id: ENV['GUEST_PROID'])
+User.create(id: 1, email: 'guest_user@example.com', password: ENV['GUEST_USER_PASSWORD'],
+            project_id: ENV['GUEST_PROID'])
 
-Category.create(id: 1, title: '安全に関する項目', description: '安全に関する項目です', project_id: ENV['GUEST_PROID'], admin_id: 1)
-Category.create(id: 2, title: '4Sに関する項目', description: '4Sに関する項目です', project_id: ENV['GUEST_PROID'], admin_id: 1)
-Category.create(id: 3, title: '作業に関する項目', description: '作業に関する項目です', project_id: ENV['GUEST_PROID'], admin_id: 1)
+Category.create(id: 1, title: '安全に関する項目', description: '安全に関する項目です',
+                project_id: ENV['GUEST_PROID'], admin_id: 1)
+Category.create(id: 2, title: '4Sに関する項目', description: '4Sに関する項目です',
+                project_id: ENV['GUEST_PROID'], admin_id: 1)
+Category.create(id: 3, title: '作業に関する項目', description: '作業に関する項目です',
+                project_id: ENV['GUEST_PROID'], admin_id: 1)
 
 Content.create(
   title: '安全に作業するために',
@@ -69,6 +74,3 @@ Content.create(
   youtube_url: 'https://youtu.be/XZggMcS11TQ',
   admin_id: 1
 )
-
-
-

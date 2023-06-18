@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "AdminsControllers", type: :system do
-
-  let(:admin) {create(:admin)}
+RSpec.describe 'AdminsControllers', type: :system do
+  let(:admin) { create(:admin) }
 
   context 'admin(管理者)の詳細が見れること' do
     scenario '詳細ページに情報があること' do

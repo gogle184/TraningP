@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :category do
     title { 'title' }
-    description { 'description'}
+    description { 'description' }
     admin
-    project_id {admin.project_id}
+    project_id { admin.project_id }
   end
 end

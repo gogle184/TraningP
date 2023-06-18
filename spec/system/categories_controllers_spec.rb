@@ -1,11 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "CategoriesControllers", type: :system do
-
-  let(:admin) {create(:admin)}
-  let(:user) {create(:user)}
-  let(:category) {create(:category, admin: admin)}
-  let(:content) {create(:content, admin: admin)}
+RSpec.describe 'CategoriesControllers', type: :system do
+  let(:admin) { create(:admin) }
+  let(:user) { create(:user) }
+  let(:category) { create(:category, admin:) }
+  let(:content) { create(:content, admin:) }
 
   context 'カテゴリーのアクセス制限について' do
     before  do
@@ -13,7 +12,7 @@ RSpec.describe "CategoriesControllers", type: :system do
     end
 
     scenario 'admin(管理者)であればアクセスできること' do
-      login_as(admin, :scope => :admin)
+      login_as(admin, scope: :admin)
       visit categories_path
       expect(current_path).to eq categories_path
       expect(page).to have_content 'カテゴリー名'
@@ -31,7 +30,7 @@ RSpec.describe "CategoriesControllers", type: :system do
     end
 
     scenario 'user(利用者)はアクセスできないこと' do
-      login_as(user, :scope => :user)
+      login_as(user, scope: :user)
       visit categories_path
       expect(current_path).to eq new_admin_session_path
       expect(page).to have_content 'ログインもしくはアカウント登録してください。'
@@ -65,11 +64,11 @@ RSpec.describe "CategoriesControllers", type: :system do
 
     scenario '「カテゴリー名」「カテゴリー説明」の両方の入力がない時、追加ボタンを押せないこと' do
       visit categories_path
-      fill_in 'category[title]', with: "カテゴリ失敗"
-      fill_in 'category[description]', with: ""
-      expect(page).to have_button("追加", disabled: true)
-      fill_in 'category[description]', with: "テストテスト"
-      expect(page).to have_button("追加", disabled: false)
+      fill_in 'category[title]', with: 'カテゴリ失敗'
+      fill_in 'category[description]', with: ''
+      expect(page).to have_button('追加', disabled: true)
+      fill_in 'category[description]', with: 'テストテスト'
+      expect(page).to have_button('追加', disabled: false)
     end
 
     scenario '同じカテゴリー名、説明は登録できないこと' do
@@ -88,7 +87,7 @@ RSpec.describe "CategoriesControllers", type: :system do
 
   context 'カテゴリーの編集、削除について' do
     before do
-      login_as(admin, :scope => :admin)
+      login_as(admin, scope: :admin)
       visit categories_path
       fill_in 'category[title]', with: '短くしたいな'
       fill_in 'category[description]', with: '短くしたいな'
