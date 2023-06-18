@@ -4,6 +4,8 @@
 簡単作業で研修マニュアルをいち早く作成することができます。
 https://kensyu-maker.herokuapp.com/
 
+![全体のやつ](https://github.com/gogle184/TraningP/assets/114890397/a51459c1-139c-45a3-9212-52b556762a49)
+
 <br>
 
 ## 作成経緯
@@ -24,12 +26,21 @@ https://kensyu-maker.herokuapp.com/
 ## アプリ操作説明
 
 ### 管理者(研修担当側)の場合
+
+![admin会員登録](https://github.com/gogle184/TraningP/assets/114890397/25a2d55d-c5d2-468d-8db9-f120a56ed216)
+
 1. アプリを開き、ログインまたは会員登録を押してください。
 2. 研修作成を押してください。
 3. カテゴリー項目は必須項目ですので作成していない場合、ページから指定のリンクからカテゴリーを選択してください。
+
+![コンテンツ作成](https://github.com/gogle184/TraningP/assets/114890397/090d3f5b-06fd-487a-980b-51f769babecc)
+
 4. 必要事項を入力後、コンテンツ一覧画面に戻るのでコンテンツを確認してください。
 
 ### 利用者(研修を受ける側)の場合
+
+![user新規会員登録](https://github.com/gogle184/TraningP/assets/114890397/18cc1642-24bc-4be4-82f7-f7a06ea25182)
+
 1. 管理者からproject_idを聞いてください。
 2. アプリを開き、ログインまたは会員登録を押してください。
 3. 研修一覧から必要な項目を選択し、コンテンツを確認してください。
