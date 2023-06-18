@@ -1,11 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "ContentsControllers", type: :system,js: true do
-  let(:admin) {create(:admin)}
-  let!(:user) {create(:user, project_id: admin.project_id)}
-  let!(:category) {create(:category, admin: admin ,title: 'specテスト用',description: 'テストカテゴリ')}
-  let!(:content) {create(:content, category: category, admin: admin ,title: 'テストコンテンツ', description: 'テスト用です')}
-  
+RSpec.describe 'ContentsControllers', type: :system, js: true do
+  let(:admin) { create(:admin) }
+  let!(:user) { create(:user, project_id: admin.project_id) }
+  let!(:category) { create(:category, admin:, title: 'specテスト用', description: 'テストカテゴリ') }
+  let!(:content) { create(:content, category:, admin:, title: 'テストコンテンツ', description: 'テスト用です') }
 
   describe 'admin(管理者)機能について' do
     before do
@@ -30,7 +29,7 @@ RSpec.describe "ContentsControllers", type: :system,js: true do
       scenario '不備があると新規作成できないこと' do
         visit new_content_path
         fill_in 'content[title]', with: ''
-        #select category.title, from: 'content[category_id]'
+        # select category.title, from: 'content[category_id]'
         fill_in 'content[description]', with: ''
         fill_in 'content[youtube_url]', with: ''
         fill_in_rich_text_area '本文', with: ''
@@ -86,10 +85,10 @@ RSpec.describe "ContentsControllers", type: :system,js: true do
       end
     end
   end
-  
+
   describe 'user(利用者)機能について' do
     before do
-      login_as(user, :scope => :user)
+      login_as(user, scope: :user)
       visit root_path
     end
 

@@ -3,11 +3,11 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'support/factory_bot'
-require'devise'
-require File.expand_path("spec/support/controller_macros.rb")
+require 'devise'
+require File.expand_path('spec/support/controller_macros.rb')
 require_relative 'support/controller_macros'
 require 'capybara/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -43,25 +43,25 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
-  #config.before(:suite) do
-    #DatabaseCleaner.clean_with(:truncation)
-  #end
+  # config.before(:suite) do
+  # DatabaseCleaner.clean_with(:truncation)
+  # end
 
-  #config.before(:each) do
-    #DatabaseCleaner.strategy = :transaction
-  #end
+  # config.before(:each) do
+  # DatabaseCleaner.strategy = :transaction
+  # end
 
-  #config.before(:each, js: true) do
-    #DatabaseCleaner.strategy = :truncation
-  #end
+  # config.before(:each, js: true) do
+  # DatabaseCleaner.strategy = :truncation
+  # end
 
-  #config.before(:each) do
-    #DatabaseCleaner.start
-  #end
+  # config.before(:each) do
+  # DatabaseCleaner.start
+  # end
 
-  #config.after(:each) do
-    #DatabaseCleaner.clean
-  #end
+  # config.after(:each) do
+  # DatabaseCleaner.clean
+  # end
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
@@ -74,7 +74,7 @@ RSpec.configure do |config|
   # explicitly tag your specs with their type, e.g.:
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :system
-  config.extend ControllerMacros, :type => :controller
+  config.extend ControllerMacros, type: :controller
   #     RSpec.describe UsersController, type: :controller do
   #       # ...
   #     end

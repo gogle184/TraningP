@@ -1,10 +1,9 @@
 class ContentsController < ApplicationController
   before_action :authenticate_admin_or_user!
   before_action :set_project_id
-  before_action :set_content,  only: [:edit, :update, :destroy, :show]
-  before_action :set_q, only: [:index, :search]
-  before_action :admin_required, except: [:index, :show]
-  
+  before_action :set_content, only: %i(edit update destroy show)
+  before_action :set_q, only: %i(index search)
+  before_action :admin_required, except: %i(index show)
 
   def index
     @contents = Content.where(project_id: @project_id)
@@ -15,39 +14,36 @@ class ContentsController < ApplicationController
     @content = Content.new
   end
 
-  def show
-  end
+  def show; end
 
   def create
     @content = Content.new(content_params)
     @content.project_id = @project_id
     @content.admin_id = current_admin.id
     if @content.save
-      flash[:notice] = "新規作成に成功しました"
+      flash[:notice] = '新規作成に成功しました'
       redirect_to contents_path
     else
-      flash[:alert] = "エラーを確認してください"
+      flash[:alert] = 'エラーを確認してください'
       render 'new'
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @content.update(content_params)
-      flash[:notice] = "編集内容を保存しました"
+      flash[:notice] = '編集内容を保存しました'
       redirect_to contents_path
     else
-      flash[:alert] = "エラーを確認してください"
+      flash[:alert] = 'エラーを確認してください'
       render 'edit'
     end
   end
 
-
   def destroy
     @content.destroy
-    flash[:notice] = "コンテンツを削除しました"
+    flash[:notice] = 'コンテンツを削除しました'
     redirect_to contents_path
   end
 
@@ -63,7 +59,7 @@ class ContentsController < ApplicationController
     elsif current_user
       authenticate_user!
     else
-      flash[:alert] = "ログインが必要です"
+      flash[:alert] = 'ログインが必要です'
       redirect_to root_path
     end
   end
@@ -73,7 +69,11 @@ class ContentsController < ApplicationController
   end
 
   def content_params
-    params.require(:content).permit(:title, :about, :category_id, :image, :description, :text, :video, :youtube_url, :project_id, :admin_id)
+    params.require(:content).permit(
+      :title, :about, :category_id, :image,
+      :description, :text, :video, :youtube_url,
+      :project_id, :admin_id
+    )
   end
 
   def set_content
@@ -86,9 +86,8 @@ class ContentsController < ApplicationController
 
   def admin_required
     unless admin_signed_in?
-      flash[:alert] = "管理者権限が必要です"
+      flash[:alert] = '管理者権限が必要です'
       redirect_to root_path
     end
   end
-
 end

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Content, type: :model do
   let(:admin) { FactoryBot.create(:admin) }
-  let(:category) { FactoryBot.create(:category, admin: admin)}
-  let(:content) { FactoryBot.create(:content, admin: admin, category: category) }
+  let(:category) { FactoryBot.create(:category, admin:) }
+  let(:content) { FactoryBot.create(:content, admin:, category:) }
 
   context 'バリデーションに関して' do
     it 'タイトル、説明文、カテゴリーID、project_id、本文がある場合、有効であること' do
@@ -20,6 +20,11 @@ RSpec.describe Content, type: :model do
       expect(content).not_to be_valid
     end
 
+    it 'タイトルが重複してる場合、無効であること' do
+      content2 = FactoryBot.build(:content, title: content.title, admin: admin)
+      expect(content2).not_to be_valid
+    end
+
     it '説明文が空欄の場合、無効であること' do
       content.description = ''
       expect(content).not_to be_valid
@@ -28,6 +33,11 @@ RSpec.describe Content, type: :model do
     it '説明文がnilの場合、無効であること' do
       content.description = nil
       expect(content).not_to be_valid
+    end
+
+    it '説明文が重複してる場合、無効であること' do
+      content2 = FactoryBot.build(:content, description: content.description, admin: admin)
+      expect(content2).not_to be_valid
     end
 
     it 'カテゴリーIDが空欄の場合、無効であること' do

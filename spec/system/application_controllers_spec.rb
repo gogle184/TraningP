@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "ApplicationControllers", type: :system do
-
-  let(:admin) {create(:admin)}
-  let(:user) {create(:user)}
+RSpec.describe 'ApplicationControllers', type: :system do
+  let(:admin) { create(:admin) }
+  let(:user) { create(:user) }
 
   context 'ログインしてないヘッダーについて' do
     before do
@@ -42,7 +41,7 @@ RSpec.describe "ApplicationControllers", type: :system do
     end
 
     scenario 'ログイン後、userのヘッダー情報が表示されていること' do
-      expect(page).to have_content user.email 
+      expect(page).to have_content user.email
       expect(page).to have_content 'アカウント情報'
       expect(page).to have_content 'ログアウト'
     end
@@ -73,7 +72,7 @@ RSpec.describe "ApplicationControllers", type: :system do
     end
 
     scenario 'ログイン後、adminのヘッダー情報が表示されていること' do
-      expect(page).to have_content admin.email 
+      expect(page).to have_content admin.email
       expect(page).to have_content 'アカウント情報'
       expect(page).to have_content 'ログアウト'
     end

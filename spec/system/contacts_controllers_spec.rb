@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "ContactsControllers", type: :system do
-
-  let(:contact){create(:contact)}
+RSpec.describe 'ContactsControllers', type: :system do
+  let(:contact) { create(:contact) }
 
   context 'お問い合わせ作成ページから確認ページに遷移できることについて' do
     scenario 'お問い合わせが作成できること' do

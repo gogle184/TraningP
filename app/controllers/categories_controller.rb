@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :set_category, only: %i(edit update destroy)
   before_action :set_project_id
-  before_action :admin_required, except: [:index, :show]
+  before_action :admin_required, except: %i(index show)
 
   def index
     @category = Category.new
@@ -14,31 +14,30 @@ class CategoriesController < ApplicationController
     @category.project_id = @project_id
     @category.admin_id = current_admin.id
     if @category.save
-      flash[:notice] = "新規作成に成功しました"
+      flash[:notice] = '新規作成に成功しました'
       redirect_to categories_path
     else
-      flash[:alert] = "エラーを確認してください"
+      flash[:alert] = 'エラーを確認してください'
       @categories = Category.where(project_id: @project_id)
       render 'index'
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @category.update(category_params)
-      flash[:notice] = "編集を反映しました"
+      flash[:notice] = '編集を反映しました'
       redirect_to categories_path
     else
-      flash[:alert] = "エラーを確認してください"
+      flash[:alert] = 'エラーを確認してください'
       render 'edit'
     end
   end
 
   def destroy
     @category.destroy
-    flash[:notice] = "カテゴリーを削除しました"
+    flash[:notice] = 'カテゴリーを削除しました'
     redirect_to categories_path
   end
 
@@ -58,7 +57,7 @@ class CategoriesController < ApplicationController
 
   def admin_required
     unless admin_signed_in?
-      flash[:alert] = "管理者権限が必要です"
+      flash[:alert] = '管理者権限が必要です'
       redirect_to root_path
     end
   end

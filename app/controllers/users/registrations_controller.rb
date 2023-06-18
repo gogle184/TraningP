@@ -11,9 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  #def create
+  # def create
   #  super
-  #end
+  # end
 
   # GET /resource/edit
   # def edit
@@ -41,6 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   protected
+
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:project_id])
   end
@@ -51,9 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def ensure_normal_user
-    if resource.email == 'guest_user@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーは削除できません'
-    end
+    redirect_to root_path, alert: 'ゲストユーザーは削除できません' if resource.email == 'guest_user@example.com'
   end
 
   # The path used after sign up.

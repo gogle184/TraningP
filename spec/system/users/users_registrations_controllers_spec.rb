@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Users::RegistrationsControllers", type: :system do
-  let(:user) {create(:user)}
+RSpec.describe 'Users::RegistrationsControllers', type: :system do
+  let(:user) { create(:user) }
 
   context '新規登録について' do
     scenario 'user(利用者)が新規登録できること' do
@@ -49,22 +49,22 @@ RSpec.describe "Users::RegistrationsControllers", type: :system do
 
   context 'user(利用者)情報編集について' do
     scenario 'user(利用者)が情報を編集できること' do
-      login_as(user, :scope => :user)
+      login_as(user, scope: :user)
       visit edit_user_registration_path(user.id)
       fill_in 'user[email]', with: 'example@example.com'
       fill_in 'user[project_id]', with: '222222'
-      fill_in 'user[current_password]', with: 'password' 
+      fill_in 'user[current_password]', with: 'password'
       click_button '変更を保存する'
       expect(current_path).to eq root_path
       expect(page).to have_content 'アカウント情報を変更しました'
     end
 
     scenario '現在のパスワードが不足すると編集できないこと' do
-      login_as(user, :scope => :user)
+      login_as(user, scope: :user)
       visit edit_user_registration_path(user.id)
       fill_in 'user[email]', with: 'example@example.com'
       fill_in 'user[project_id]', with: '111111'
-      fill_in 'user[current_password]', with: '' 
+      fill_in 'user[current_password]', with: ''
       click_button '変更を保存する'
       expect(current_path).to eq user_registration_path
       expect(page).to have_content '現在のパスワードを入力してください'

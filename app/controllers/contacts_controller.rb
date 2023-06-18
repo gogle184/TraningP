@@ -1,20 +1,18 @@
 class ContactsController < ApplicationController
-  before_action :set_new_contact, only: [:confirm, :create, :back]
+  before_action :set_new_contact, only: %i(confirm create back)
 
   def new
     @contact = Contact.new
   end
 
   def confirm
-    if @contact.invalid?
-      render 'new'
-    end
+    render 'new' if @contact.invalid?
   end
 
   def create
     if @contact.save
       ContactMailer.send_mail(@contact).deliver
-      flash[:notice] = "お問い合わせ内容を送信しました"
+      flash[:notice] = 'お問い合わせ内容を送信しました'
       redirect_to root_path
     else
       render 'new'
@@ -26,7 +24,7 @@ class ContactsController < ApplicationController
   end
 
   private
-  
+
   def set_new_contact
     @contact = Contact.new(contact_params)
   end

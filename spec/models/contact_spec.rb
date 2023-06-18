@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Contact, type: :model do
-
-  let(:contact) {FactoryBot.create(:contact)}
+  let(:contact) { FactoryBot.create(:contact) }
 
   context 'バリデーションについて' do
     it 'email、名前、本文がある場合、有効であること' do
