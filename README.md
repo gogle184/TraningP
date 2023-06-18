@@ -39,7 +39,7 @@ https://kensyu-maker.herokuapp.com/
 
 ### 利用者(研修を受ける側)の場合
 
-![user新規会員登録](https://github.com/gogle184/TraningP/assets/114890397/18cc1642-24bc-4be4-82f7-f7a06ea25182)
+![user登録(2)](https://github.com/gogle184/TraningP/assets/114890397/93f92c75-ac24-4532-af68-e656f37f9467)
 
 1. 管理者からproject_idを聞いてください。
 2. アプリを開き、ログインまたは会員登録を押してください。
