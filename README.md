@@ -50,4 +50,22 @@ https://kensyu-maker.herokuapp.com/
 - github Actions
 
 ## ER図
+![erd](https://github.com/gogle184/TraningP/assets/114890397/0b2e32a9-4ee9-40f8-803c-1c6572462fd7)
 
+## 機能一覧
+- admin(管理者)登録、ログイン機能(devise)
+- user(利用者)登録、ログイン機能(devise)
+- カテゴリ機能
+  -作成
+  -読み込み
+  -更新
+  -削除
+- コンテンツ機能
+  -作成
+  -読み込み
+  -更新
+  -削除
+-お問い合わせ機能
+  -お問い合わせ作成
+  -送信前確認画面
+  -送信機能
