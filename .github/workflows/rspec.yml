@@ -26,8 +26,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.1.2"
-          bundler-cache: true 
-          working-directory: ./kensyu
       - name: pg gem の依存関係のインストール
         run: |
           sudo apt-get update; sudo apt-get install libpq-dev
