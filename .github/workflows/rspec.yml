@@ -1,0 +1,53 @@
+name: Ruby
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  run_spec:
+    name: Run spec
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.S3_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.S3_SECRET_KEY }}
+          aws-region: ap-northeast-1
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1.2"
+          bundler-cache: true 
+          working-directory: kensyu
+      - name: pg gem の依存関係のインストール
+        run: |
+          sudo apt-get update; sudo apt-get install libpq-dev
+      - name: yarn install
+        run: |
+          yarn install --check-files
+      - name: gem install
+        run: |
+          gem install bundler -v 1.17.3
+      - name: bundler install
+        run: |
+          bundle check || bundle install --path vendor/bundle --jobs 4 --retry 3
+      - name: Setup Database
+          env:
+            DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          run: |
+            bundle exec rails db:create db:schema:load --trace
+      - name: Exec RSpec
+        run: |
+          bundle exec rspec --format documentation --force-color --backtrace
+      - name: Exec rubocop
+        run: |
+          bundle exec rubocop --extra-details --display-style-guide --parallel --display-cop-names
