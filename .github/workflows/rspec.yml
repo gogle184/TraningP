@@ -38,11 +38,13 @@ jobs:
       - name: bundler install
         run: |
           bundle check || bundle install --path vendor/bundle --jobs 4 --retry 3
-      - name: Setup Database
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Setup env
         run: |
-          bundle exec rails db:create db:schema:load --trace
+          echo '::set-env name=RAILS_ENV::test'
+          echo '::set-env name=DATABASE_URL::${{ secrets.DATABASE_URL }}'
+      - name: setup DB
+        run: |
+          bundle exec rails db:schema:load
       - name: Exec RSpec
         run: |
           bundle exec rspec --format documentation --force-color --backtrace
