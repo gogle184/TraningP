@@ -40,8 +40,8 @@ jobs:
           bundle check || bundle install --path vendor/bundle --jobs 4 --retry 3
       - name: Setup env
         run: |
-          echo '::set-env name=RAILS_ENV::test'
-          echo '::set-env name=DATABASE_URL::${{ secrets.DATABASE_URL }}'
+          echo "RAILS_ENV=test" >> $GITHUB_ENV
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
       - name: setup DB
         run: |
           bundle exec rails db:schema:load
