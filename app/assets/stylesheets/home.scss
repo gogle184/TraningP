@@ -81,14 +81,6 @@
   letter-spacing: 1.5px;
 }
 
-@media (max-width: 480px) {
-
-  .about-introduction p,
-  .how-to-introduction p {
-    font-size: 20px;
-  }
-}
-
 .how-to-page {
   margin-top: 80px;
 }
@@ -173,5 +165,13 @@
 
   .btn:not(:last-child) {
     margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .about-introduction p,
+  .how-to-introduction p {
+    font-size: 14px;
   }
 }
