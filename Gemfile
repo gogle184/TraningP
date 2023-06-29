@@ -64,7 +64,6 @@ gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
 
 gem 'aws-sdk-s3', require: false
 gem 'bootstrap', '~> 5.0.1'
-gem 'cancancan'
 gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
@@ -72,7 +71,6 @@ gem 'dotenv-rails'
 gem 'fog-aws'
 gem 'jquery-rails'
 gem 'pry-rails'
-gem 'rails_admin'
 gem 'rails-i18n'
 gem 'ransack'
 gem 'react-rails'
