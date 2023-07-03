@@ -10,7 +10,7 @@ on:
 
 jobs:
   run_spec:
-    name: Run spec
+    name: Run Rspec Rubocop
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.20.0"
-      - name: pg gem の依存関係のインストール
+      - name: pg gem install
         run: |
           sudo apt-get update; sudo apt-get install libpq-dev
       - name: yarn install
