@@ -54,9 +54,6 @@ jobs:
       - name: Exec RSpec
         run: |
           bundle exec rspec --format documentation --force-color --backtrace
-        env:
-          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
-          GMAIL_2FACTOR_PASSWORD: ${{ secrets.GMAIL_2FACTOR_PASSWORD }}
       - name: Exec rubocop
         run: |
           bundle exec rubocop --extra-details --display-style-guide --parallel --display-cop-names
