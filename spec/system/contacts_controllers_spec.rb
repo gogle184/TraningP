@@ -41,6 +41,7 @@ RSpec.describe 'ContactsControllers', type: :system do
     end
 
     scenario '「送信」を押すとメールが送信できること' do
+      allow(ContactMailer).to receive(:send_mail).and_return(double(deliver: true))
       click_button '送信', id: 'submit-button'
       expect(current_path).to eq root_path
       expect(page).to have_content 'お問い合わせ内容を送信しました'

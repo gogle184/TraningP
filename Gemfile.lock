@@ -432,6 +432,7 @@ DEPENDENCIES
   rails-i18n
   ransack
   react-rails
+  rspec-mocks
   rspec-rails
   rubocop-airbnb
   sass-rails (>= 6)
