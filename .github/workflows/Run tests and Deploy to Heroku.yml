@@ -1,4 +1,4 @@
-name: rspec-rubocop
+name: Run tests and Deploy to Heroku
 
 on:
   push:
@@ -11,9 +11,7 @@ on:
 jobs:
   run_spec:
     name: Run spec
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Configure AWS credentials
@@ -57,3 +55,15 @@ jobs:
       - name: Exec rubocop
         run: |
           bundle exec rubocop --extra-details --display-style-guide --parallel --display-cop-names
+
+  deploy_to_heroku:
+    name: Deploy to Heroku
+    needs: run_spec
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.8.8
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "kensyu-maker"
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
