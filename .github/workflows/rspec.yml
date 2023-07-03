@@ -40,7 +40,7 @@ jobs:
           bundle check || bundle install --path vendor/bundle --jobs 4 --retry 3
       - name: Setup env
         run: |
-          echo "RAILS_ENV=production" >> $GITHUB_ENV
+          echo "RAILS_ENV=test" >> $GITHUB_ENV
           echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
       - name: Exec RSpec
         run: |
