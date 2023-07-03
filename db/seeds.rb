@@ -8,7 +8,7 @@
 # -*- coding: utf-8 -*-
 
 Admin.create(id: 1, email: 'guest_admin@example.com', password: ENV['GUEST_ADMIN_PASSWORD'],
-             project_id: ENV['GUEST_PROID'])
+            project_id: ENV['GUEST_PROID'])
 
 User.create(id: 1, email: 'guest_user@example.com', password: ENV['GUEST_USER_PASSWORD'],
             project_id: ENV['GUEST_PROID'])

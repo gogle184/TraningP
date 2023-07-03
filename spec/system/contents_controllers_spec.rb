@@ -77,7 +77,6 @@ RSpec.describe 'ContentsControllers', type: :system, js: true do
     context 'コンテンツの削除について' do
       scenario 'コンテンツの削除ができること' do
         visit contents_path
-        click_link content.title
         click_link '削除'
         page.accept_confirm
         expect(current_path).to eq contents_path

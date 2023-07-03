@@ -96,10 +96,8 @@ RSpec.describe 'CategoriesControllers', type: :system do
 
     scenario 'カテゴリーが編集できること' do
       click_link '編集'
-      fill_in 'category[title]', with: ''
-      fill_in 'category[description]', with: ''
-      fill_in 'category[title]', with: 'testだよ'
-      fill_in 'category[description]', with: 'testなんですよ'
+      fill_in 'category_title', with: 'testだよ'
+      fill_in 'category_description', with: 'testなんですよ'
       click_button '更新する'
       expect(current_path).to eq categories_path
       expect(page).to have_content 'testだよ'

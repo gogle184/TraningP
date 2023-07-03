@@ -1,4 +1,4 @@
-name: Ruby
+name: Run tests and Deploy to Heroku
 
 on:
   push:
@@ -10,10 +10,8 @@ on:
 
 jobs:
   run_spec:
-    name: Run spec
-
+    name: Run Rspec Rubocop
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Configure AWS credentials
@@ -26,7 +24,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.1.2"
-      - name: pg gem の依存関係のインストール
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.20.0"
+      - name: pg gem install
         run: |
           sudo apt-get update; sudo apt-get install libpq-dev
       - name: yarn install
@@ -38,6 +40,11 @@ jobs:
       - name: bundler install
         run: |
           bundle check || bundle install --path vendor/bundle --jobs 4 --retry 3
+      - name: webpacker install
+        run: |
+          rm -rf bin/webpack*
+          bin/rails webpacker:install
+          bundle exec bin/rails webpacker:compile
       - name: Setup env
         run: |
           echo "RAILS_ENV=test" >> $GITHUB_ENV
@@ -48,3 +55,15 @@ jobs:
       - name: Exec rubocop
         run: |
           bundle exec rubocop --extra-details --display-style-guide --parallel --display-cop-names
+
+  deploy_to_heroku:
+    name: Deploy to Heroku
+    needs: run_spec
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.8.8
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "kensyu-maker"
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}

@@ -41,13 +41,14 @@ RSpec.describe 'ContactsControllers', type: :system do
     end
 
     scenario '「送信」を押すとメールが送信できること' do
-      click_button '送信'
+      allow(ContactMailer).to receive(:send_mail).and_return(double(deliver: true))
+      click_button '送信', id: 'submit-button'
       expect(current_path).to eq root_path
       expect(page).to have_content 'お問い合わせ内容を送信しました'
     end
 
     scenario '入力画面に戻るを押すと作成ページに戻れること' do
-      click_button '入力画面に戻る'
+      click_button '入力画面に戻る', id: 'back-button'
       expect(current_path).to eq back_path
       expect(page).to have_field('contact[name]', with: contact.name)
       expect(page).to have_field('contact[email]', with: contact.email)
