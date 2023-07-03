@@ -90,4 +90,10 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Warden::Test::Helpers
   config.include ActionTextHelper, type: :system
+  config.before(:each, type: :system) do |example|
+    driven_by :selenium, screen_size: [1400, 1400], using: :headless_chrome do |options|
+      options.add_argument('--disable-dev-sim-usage')
+      options.add_argument('--no-sandbox')
+    end
+  end
 end
