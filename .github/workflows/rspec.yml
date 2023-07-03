@@ -41,8 +41,8 @@ jobs:
       - name: webpacker install
         run: |
           rm -rf bin/webpack*
-          rails webpacker:install
-          bundle exec rails webpacker:compile
+          bin/rails webpacker:install
+          bundle exec bin/rails webpacker:compile
       - name: Setup env
         run: |
           echo "RAILS_ENV=test" >> $GITHUB_ENV
