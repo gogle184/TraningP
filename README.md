@@ -75,6 +75,10 @@ https://github.com/gogle184/TraningP/pull/28
 gem 'react-rails'導入時に<%=題名{props}%>を<%={props}%>のように書き換えたところpropsは変わっているのに題名という文字が消えないエラーに遭遇しました。gitのコミットを遡り、予想としては@mui-materialを導入するとreact-railsが正常に機能しなくなるのではないかと結論づけました。その際、使ったことのないgitのコマンドをたくさん試したので良い経験になりました。
 https://github.com/gogle184/TraningP/pull/49
 
+### 3.githubActionsの導入
+当初はcircleCiを用いてデプロイ時にrubocopとrspecを事前に行う仕様にしたが、gitHubにある機能を使ってみたいということで挑戦してみました。初めて触れるコマンドが多く、何度もコミットし出たエラーに対して仮説を立てて書き直してを何度も繰り返し、仮想化に関して大変いい勉強の機会になりました。
+https://github.com/gogle184/TraningP/pull/86
+
 <br>
 
 ## 直近の改修目標
