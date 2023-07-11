@@ -3,7 +3,7 @@ class ContentsController < ApplicationController
   before_action :set_project_id
   before_action :set_content, only: %i(edit update destroy show)
   before_action :set_q, only: %i(index search)
-  before_action :admin_required, except: %i(index show)
+  before_action :admin_required, except: %i(index show search)
 
   def index
     @contents = Content.where(project_id: @project_id)
